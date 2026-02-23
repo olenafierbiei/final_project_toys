@@ -1,55 +1,159 @@
-body {
-  margin: 20px;
-}
-/* Основні стилі для всієї шапки */
+/* 1. Основний контейнер шапки */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 5%;
-  background-color: #f2ebe1;
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-header img[alt="logo1"] {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-  border-radius: 50%;
+/* 2. Логотип */
+.logo img {
+  height: 50px;
+  width: auto;
 }
 
-nav ul {
-  list-style: none;
+/* 3. Навігація (Список посилань) */
+.nav-links {
   display: flex;
+  list-style: none;
+  gap: 20px;
   margin: 0;
   padding: 0;
-  gap: 40px;
 }
 
-nav ul li a {
-  text-decoration: none; 
-  color: #402e21; 
+.nav-links li a {
+  text-decoration: none;
+  color: #402e21;
   font-weight: 500;
-  transition: color 0.3s ease; 
-    font-family: "Playfair Display", serif; 
-    font-size: 20px;
+  font-size: 15px;
+  transition: 0.3s;
 }
 
-nav ul li a:hover {
-  color: #8c6a4a; 
+.nav-links li a:hover {
+  color: #8c6a4a;
 }
 
-.header-icons {
+/* 4. Блок з іконками (Пошук, Юзер, Кошик) */
+header div:last-child {
   display: flex;
   align-items: center;
-  gap: 15px; 
+  gap: 15px;
 }
 
-header img[src^="svg/"] {
+header div:last-child img {
   width: 24px;
   height: 24px;
-  transition: transform 0.2s ease;
+  cursor: pointer;
+  transition: transform 0.2s;
 }
 
-header img[src^="svg/"]:hover {
-  transform: scale(1.1); /
+header div:last-child img:hover {
+  transform: scale(1.1);
+}
+
+/* 5. Бургер-меню (приховане на ПК) */
+.burger-menu {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.burger-menu span {
+  width: 25px;
+  height: 3px;
+  background-color: #402e21;
+  transition: 0.3s;
+}
+
+/* --- МОБІЛЬНА АДАПТАЦІЯ (max-width: 992px) --- */
+/* Стилі для мобільної версії (max-width: 992px) */
+@media (max-width: 992px) {
+  .nav-links {
+    position: fixed;
+    left: 0;
+    top: -100%; /* Меню сховане зверху */
+    width: 100%;
+    height: auto; /* Висота підлаштовується під контент */
+    background-color: #fdfaf7;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 0 40px 0; /* Відступ зверху, щоб не перекривати лого */
+    transition: all 0.5s ease-in-out;
+    z-index: 999;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Коли меню активне — воно виїжджає на top: 0 */
+  .nav-links.active {
+    top: 0;
+  }
+
+  .burger-menu {
+    display: flex;
+    z-index: 1001; /* Бургер завжди має бути над меню */
+  }
+
+  /* Анімація бургера у хрестик (щоб було зрозуміло, як закрити) */
+  .burger-menu.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+  }
+  .burger-menu.open span:nth-child(2) {
+    opacity: 0;
+  }
+  .burger-menu.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -7px);
+  }
+}
+
+.search-wrapper {
+  position: relative;
+}
+
+.search-input-box {
+  position: absolute;
+  right: 0;
+  top: 45px;
+  background: white;
+  border: 2px solid #8c6a4a;
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex; /* Тримаємо flex для структури */
+  gap: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 2000;
+
+  /* Стан "Сховано" */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+/* Стан "Активно" (коли JS додає клас) */
+.search-input-box.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#search-input {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  outline: none;
+}
+
+#search-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #8c6a4a;
+  line-height: 1;
 }

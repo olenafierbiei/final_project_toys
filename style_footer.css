@@ -26,7 +26,7 @@ footer img[alt="logo1"] {
   border-radius: 50%;
 }
 
-footer nav ul {
+footer ul {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -35,14 +35,14 @@ footer nav ul {
   gap: 10px;
 }
 
-footer nav ul li a {
+footer ul li a {
   text-decoration: none;
   color: #402e21;
   font-weight: 500;
   transition: 0.3s;
 }
 
-footer nav ul li a:hover {
+footer ul li a:hover {
   color: #8c6a4a; /* Колір при наведенні */
 }
 

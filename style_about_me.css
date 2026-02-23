@@ -1,0 +1,59 @@
+#about_me {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  padding: 80px 10%;
+  background-color: #fdfaf7; /* Теплий кремовий фон */
+}
+
+#about_me img {
+  width: 500px;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* СТИЛІ ДЛЯ БЛОКУ З ТЕКСТОМ ТА РАМКОЮ */
+#info_about_me {
+  max-width: 800px;
+  padding: 40px;
+  position: relative;
+  background-color: #ffffff;
+}
+
+/* Декоративний ефект: пунктирна лінія всередині (імітація стібків) */
+#info_about_me::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border-radius: 20px 0 20px 0;
+  pointer-events: none;
+}
+
+#info_about_me h1 {
+  font-family: "Playfair Display", serif;
+  color: #402e21;
+  margin-bottom: 25px;
+  font-size: 40px;
+  text-align: center;
+}
+
+#info_about_me p {
+  font-family: "Playfair Display", serif;
+  line-height: 1.8;
+  color: #5a4a3a;
+  font-size: 24px;
+}
+
+/* Адаптація під мобільні пристрої */
+@media (max-width: 1024px) {
+  #about_me {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+}
