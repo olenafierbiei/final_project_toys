@@ -1,0 +1,186 @@
+.container h2 {
+  display: flex;
+  justify-content: center;
+  margin: 40px;
+  color: #402e21;
+  font-family: "Playfair Display", serif;
+  font-size: 40px;
+}
+/* Контейнер для відгуків */
+
+.reviews-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+/* Картка відгуку */
+.review-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  width: 300px; /* Ширина кожної картки */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0e6db;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.user-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /* Робимо аватар круглим */
+  object-fit: cover;
+}
+
+.user-name {
+  margin: 0;
+  color: #402e21;
+}
+
+.review-text {
+  font-style: italic;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Стилі для форми */
+.reviews-form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fdfaf7;
+  padding: 30px;
+  border-radius: 20px;
+  display: none; /* ПРИХОВАНО ЗА ЗАМОВЧУВАННЯМ */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.reviews-form-container.active {
+  display: block; /* ПОКАЗУЄМО, КОЛИ ДОДАЄТЬСЯ КЛАС active */
+}
+
+/* Кнопка "Написати відгук" */
+.toggle-form-btn {
+  display: block;
+  margin: 20px auto;
+  background-color: #8c6a4a;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.toggle-form-btn:hover {
+  background-color: #402e21;
+}
+
+/* Поля форми */
+.form-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.form-row input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d9c5b2;
+  border-radius: 10px;
+  outline: none;
+}
+
+.submit-btn {
+  width: 100%;
+  background: #402e21;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+/* Відгуки в рядок */
+.reviews-container {
+  display: flex;
+  flex-wrap: wrap; /* Дозволяє карткам переноситися, якщо мало місця */
+  gap: 20px;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.review-card {
+  flex: 0 1 300px; /* Картка не більше 300px */
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 10px;
+  background: #fff;
+}
+
+/* Форма */
+.reviews-form-container {
+  display: none; /* СПОЧАТКУ ПРИХОВАНО */
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f4f0;
+}
+
+/* Клас, який ми будемо додавати через JS */
+.reviews-form-container.show {
+  display: block;
+}
+
+.toggle-form-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/* Батьківський контейнер, який обрізає все, що виходить за край */
+.reviews-section .container {
+  overflow: hidden;
+  position: relative;
+  padding: 20px 0;
+}
+
+/* Контейнер зі слайдами */
+.reviews-container {
+  display: flex;
+  flex-wrap: nowrap; /* Важливо: не дозволяємо карткам переноситися на новий рядок */
+  gap: 20px;
+  padding: 20px;
+
+  /* Додаємо автоматичну прокрутку */
+  overflow-x: auto; /* Дозволяє крутити пальцем на телефонах */
+  scroll-behavior: smooth;
+
+  /* Ховаємо смугу прокрутки для охайності */
+  -ms-overflow-style: none; /* для IE та Edge */
+  scrollbar-width: none; /* для Firefox */
+}
+
+.reviews-container::-webkit-scrollbar {
+  display: none; /* для Chrome, Safari та Opera */
+}
+
+/* Картка відгуку */
+.review-card {
+  flex: 0 0 300px; /* Картка завжди має ширину 300px і не стискається */
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0e6db;
+}

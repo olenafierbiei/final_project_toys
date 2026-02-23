@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Delius+Unicase:wght@400;700&family=Farro:wght@300;400;500;700&family=Francois+One&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:wght@800&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+NZ+Basic+Guides&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@1,600&family=Work+Sans:ital,wght@1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="img/logo1.png" sizes="32x32" />
+    <title>KnitWonders | В'язані іграшки та пледи</title>
+    <link rel="stylesheet" href="style_hero.css" />
+    <link rel="stylesheet" href="style_header.css" />
+    <link rel="stylesheet" href="style_products.css" />
+    <link rel="stylesheet" href="style_reviews.css" />
+    <script src="script.js" dafer></script>
+    <script src="script_reviews.js" dafer></script>
+  </head>
+  <body>
+    <header>
+      <img src="img/logo1.png" alt="logo1" />
+      <nav>
+        <ul>
+          <li><a href="index.html">Головна сторінка</a></li>
+          <li><a href="about.html">Про майстриню</a></li>
+          <li><a href="catalog.html">Каталог товарів</a></li>
+          <li><a href="delivery.html">Оплата і доставка</a></li>
+          <li><a href="#contacts">Контакти</a></li>
+        </ul>
+      </nav>
+      <div>
+        <a href=""><img src="svg/user.svg" alt="user" /></a>
+        <a href=""><img src="svg/heard.svg" alt="heard" /></a>
+        <a href=""><img src="svg/bracket.svg" alt="bracket" /></a>
+        <img src="svg/search.svg" alt="search" />
+      </div>
+    </header>
+    <section id="hero">
+      <div class="slider">
+        <img src="img/mainpicture.png" alt="1" class="slide active" />
+        <img src="img/im1.png" alt="2" class="slide" />
+        <img src="img/img3.png" alt="3" class="slide" />
+      </div>
+
+      <div class="hero-overlay">
+        <h1>KnitWonders — тепло в кожній петлі</h1>
+        <ul class="dots">
+          <li class="dot active"></li>
+          <li class="dot"></li>
+          <li class="dot"></li>
+        </ul>
+      </div>
+    </section>
+    <section id="products">
+      <h2>Каталог</h2>
+      <div id="catalog1">
+        <div class="catalog">
+          <img src="img/toys/toy2.png" alt="toy2" />
+          <h3>М'які іграшки</h3>
+          <a href="">Переглянути товари</a>
+        </div>
+        <div class="catalog">
+          <img src="img/blanket_for_children/img5.png" alt="img5" />
+          <h3>Пледи</h3>
+          <a href="">Переглянути товари</a>
+        </div>
+        <div class="catalog">
+          <img src="img/toys_for_babies/for_baby2.png" alt="toys_for_babies" />
+          <h3>Іграшки для малюків</h3>
+          <a href="">Переглянути товари</a>
+        </div>
+      </div>
+    </section>
+    <section class="reviews-section">
+      <div class="container">
+        <h2 class="section-title">Відгуки клієнтів</h2>
+
+        <div class="reviews-container">
+          <div class="review-card">
+            <div class="user-info">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                alt="user-foto"
+                class="user-avatar"
+              />
+              <div>
+                <h4 class="user-name">Anna</h4>
+              </div>
+            </div>
+            <p class="review-text">
+              «Замовляла в'язаного єдинорога. Він просто неймовірний!»
+            </p>
+          </div>
+        </div>
+
+        <button class="toggle-form-btn" id="show-form-btn">
+          Залишити відгук
+        </button>
+
+        <div class="reviews-form-container" id="reviews-form">
+          <h4>Залишити свій відгук</h4>
+          <form id="add-review-form">
+            <div class="form-group">
+              <label for="user-image">Ваше фото (за бажанням)</label>
+              <input
+                type="file"
+                id="user-image"
+                name="user-image"
+                accept="image/*"
+              />
+            </div>
+            <div class="form-row">
+              <input type="text" placeholder="Ваше ім'я" required name="name" />
+              <input
+                type="email"
+                placeholder="Ваш Email"
+                required
+                name="email"
+              />
+            </div>
+            <textarea
+              placeholder="Поділіться вашими враженнями..."
+              required
+              name="comment"
+              rows="5"
+            ></textarea>
+            <button type="submit" class="submit-btn">Відправити відгук</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <img
+        src="img/Gemini_Generated_Image_ptmh42ptmh42ptmh.png"
+        alt="img-footer"
+      />
+      <img src="img/logo1.png" alt="logo1" />
+      <nav>
+        <ul>
+          <li><a href="index.html">Головна сторінка</a></li>
+          <li><a href="about.html">Про майстриню</a></li>
+          <li><a href="catalog.html">Каталог товарів</a></li>
+          <li><a href="delivery.html">Оплата і доставка</a></li>
+          <li><a href="contacts.html">Контакти</a></li>
+        </ul>
+      </nav>
+      <div class="contact" id="contacts">
+        <h4>Контакти</h4>
+        <a href=""><img src="svg/facebook.svg" alt="facebook" /></a>
+        <a href=""><img src="svg/instagram.svg" alt="instagram" /></a>
+        <a href=""><img src="svg/twitter.svg" alt="twitter" /></a>
+        <p>08005002020</p>
+      </div>
+    </footer>
+  </body>
+</html>

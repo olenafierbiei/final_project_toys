@@ -1,0 +1,84 @@
+/* Основний контейнер для секції */
+#products {
+  background-color: #f2ebe1;
+  padding: 50px 1%;
+  text-align: center; /* Центруємо заголовок "Каталог" */
+}
+
+#products h2 {
+  margin-bottom: 30px;
+  font-size: 2rem;
+  color: #402e21;
+  font-family: "Playfair Display", serif;
+  font-size: 40px;
+}
+
+/* Контейнер, що тримає всі три блоки */
+#catalog1 {
+  display: flex;
+  flex-wrap: wrap; /* Дозволяє блокам переноситися на новий рядок */
+  justify-content: space-around; /* Центрує блоки в ряду */
+  gap: 50px; /* Відстань між блоками */
+}
+
+/* Стилі для кожного окремого блоку каталогу */
+.catalog {
+  display: flex;
+  flex-direction: column; /* Вибудовує елементи всередині блоку вертикально */
+  align-items: center; /* Центрує назву, фото та посилання */
+  width: 500px; /* Фіксована ширина для гарного вигляду */
+  background: #fff; /* Білий фон (за бажанням) */
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Легка тінь */
+}
+
+/* Назва блоку — зверху */
+.catalog h3 {
+  order: 1; /* Задаємо черговість: 1 — найперший */
+  margin-bottom: 15px;
+  color: #402e21;
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+}
+
+/* Картинка — посередині */
+.catalog img {
+  order: 2; /* 2 — посередині */
+  width: 100%; /* Розтягуємо по ширині блоку */
+  height: 360px; /* Фіксуємо висоту, щоб всі блоки були однакові */
+  object-fit: cover; /* Обрізаємо фото, щоб не деформувалося */
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+/* Посилання — знизу */
+.catalog a {
+  order: 3; /* 3 — в самому низу */
+  text-decoration: none;
+  color: #8c6a4a;
+  font-weight: bold;
+  border: 2px solid #8c6a4a;
+  padding: 10px 20px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+}
+
+.catalog a:hover {
+  background-color: #8c6a4a;
+  color: #fff;
+}
+
+/* Адаптація для телефонів */
+@media (max-width: 768px) {
+  #products {
+    flex-direction: column; /* Блоки стають один під одним */
+    align-items: center;
+  }
+
+  .catalog {
+    width: 90%; /* На мобільному займають майже всю ширину */
+  }
+}

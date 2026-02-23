@@ -1,0 +1,55 @@
+body {
+  margin: 20px;
+}
+/* Основні стилі для всієї шапки */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5%;
+  background-color: #f2ebe1;
+}
+
+header img[alt="logo1"] {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  gap: 40px;
+}
+
+nav ul li a {
+  text-decoration: none; 
+  color: #402e21; 
+  font-weight: 500;
+  transition: color 0.3s ease; 
+    font-family: "Playfair Display", serif; +
+    font-size: 20px;
+}
+
+nav ul li a:hover {
+  color: #8c6a4a; 
+}
+
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 15px; 
+}
+
+header img[src^="svg/"] {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease;
+}
+
+header img[src^="svg/"]:hover {
+  transform: scale(1.1); /
+}
