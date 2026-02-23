@@ -1,103 +1,100 @@
-document.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("load", function () {
   const showFormBtn = document.getElementById("show-form-btn");
   const reviewsForm = document.getElementById("reviews-form");
   const addReviewForm = document.getElementById("add-review-form");
   const reviewContainer = document.querySelector(".reviews-container");
 
-  // ПЕРЕВІРКА: якщо контейнера немає, зупиняємо скрипт, щоб не було помилок
-  if (!reviewContainer) {
-    console.warn("Контейнер .reviews-container не знайдено на цій сторінці.");
-    return;
-  }
+  if (!reviewContainer) return; // Захист від помилок
 
-  // --- 1. СТВОРЕННЯ ЗІРОК У ФОРМІ БЕЗ ЗМІНИ HTML ---
-  if (addReviewForm) {
-    const starContainer = document.createElement("div");
-    starContainer.className = "star-rating";
-    for (let i = 5; i >= 1; i--) {
-      starContainer.innerHTML += `
-                <input type="radio" name="stars" value="${i}" id="star-${i}" ${i === 5 ? "checked" : ""}>
-                <label for="star-${i}">★</label>
-            `;
-    }
-    addReviewForm.prepend(starContainer); // Додаємо на початок форми
-  }
-
-  // --- 2. ФУНКЦІЯ ВІДОБРАЖЕННЯ КАРТКИ ---
+  // --- 1. ФУНКЦІЯ ВІДОБРАЖЕННЯ КАРТКИ НА ЕКРАНІ ---
   function renderReview(name, comment, stars, isNew = true) {
     const div = document.createElement("div");
     div.className = "review-card";
-
-    // Додаємо кнопку видалення (хрестик)
     div.innerHTML = `
-        <button class="delete-btn" style="float: right; cursor: pointer; background: none; border: none; color: red;">&times;</button>
-        <h4>${name}</h4>
-        <div>${"⭐".repeat(stars)}</div>
-        <p>${comment}</p>
-    `;
+            <button class="delete-btn" title="Видалити" style="float:right; cursor:pointer; border:none; background:none; color:red; font-size:20px;">&times;</button>
+            <div class="user-info">
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="user-avatar" style="width:50px; border-radius:50%;" />
+                <div>
+                    <h4 class="user-name" style="margin:0;">${name}</h4>
+                    <div class="rating">${"⭐".repeat(stars)}</div>
+                </div>
+            </div>
+            <p class="review-text" style="margin-top:10px;">«${comment}»</p>
+        `;
 
-    // Додаємо подію для кнопки видалення
+    // Логіка видалення
     div.querySelector(".delete-btn").onclick = function () {
       if (confirm("Видалити цей відгук?")) {
-        deleteReviewFromStorage(name, comment); // Видаляємо з пам'яті
-        div.remove(); // Видаляємо з екрана
+        removeReviewFromStorage(name, comment);
+        div.remove();
       }
     };
 
-    isNew ? reviewContainer.prepend(div) : reviewContainer.appendChild(div);
+    // Якщо новий — додаємо вгору, якщо завантажений — вниз
+    if (isNew) {
+      reviewContainer.prepend(div);
+    } else {
+      reviewContainer.appendChild(div);
+    }
   }
 
-  // --- 3. ЗАВАНТАЖЕННЯ З ПАМ'ЯТІ (LocalStorage) ---
-  function loadReviews() {
-    const saved = JSON.parse(localStorage.getItem("userReviews")) || [];
-    saved.forEach((r) => renderReview(r.name, r.comment, r.stars || 5, false));
+  // --- 2. ЗАВАНТАЖЕННЯ З ПАМ'ЯТІ ПРИ ВІДКРИТТІ СТОРІНКИ ---
+  function loadReviewsFromStorage() {
+    const savedData = localStorage.getItem("userReviews");
+    if (savedData) {
+      const reviews = JSON.parse(savedData);
+      reviews.forEach((rev) => {
+        // Виводимо кожен збережений відгук
+        renderReview(rev.name, rev.comment, rev.stars, false);
+      });
+    }
   }
 
-  // --- 4. ПОКАЗ ФОРМИ ---
+  // --- 3. ВИДАЛЕННЯ З ПАМ'ЯТІ ---
+  function removeReviewFromStorage(name, comment) {
+    let reviews = JSON.parse(localStorage.getItem("userReviews")) || [];
+    // Залишаємо всі, крім того, який видаляємо
+    reviews = reviews.filter((r) => r.name !== name || r.comment !== comment);
+    localStorage.setItem("userReviews", JSON.stringify(reviews));
+  }
+
+  // --- 4. КНОПКА ПОКАЗУ ФОРМИ ---
   if (showFormBtn && reviewsForm) {
-    showFormBtn.addEventListener("click", () => {
-      reviewsForm.classList.toggle("show");
-      showFormBtn.textContent = reviewsForm.classList.contains("show")
-        ? "Закрити"
-        : "Залишити відгук";
-    });
+    showFormBtn.onclick = function () {
+      const isHidden =
+        reviewsForm.style.display === "none" ||
+        reviewsForm.style.display === "";
+      reviewsForm.style.display = isHidden ? "block" : "none";
+      showFormBtn.textContent = isHidden ? "Закрити" : "Залишити відгук";
+    };
   }
 
-  // --- 5. ВІДПРАВКА ФОРМИ ---
+  // --- 5. ВІДПРАВКА ФОРМИ ТА ЗБЕРЕЖЕННЯ ---
   if (addReviewForm) {
-    addReviewForm.addEventListener("submit", function (e) {
+    addReviewForm.onsubmit = function (e) {
       e.preventDefault();
-      const name = addReviewForm.querySelector('input[name="name"]').value;
-      const comment = addReviewForm.querySelector(
-        'textarea[name="comment"]',
-      ).value;
-      const stars = parseInt(
-        addReviewForm.querySelector('input[name="stars"]:checked').value,
-      );
 
-      renderReview(name, comment, stars);
+      const name = addReviewForm.querySelector('[name="name"]').value;
+      const comment = addReviewForm.querySelector('[name="comment"]').value;
+      // Шукаємо обрану зірочку, якщо їх немає — ставимо 5
+      const starsInput = addReviewForm.querySelector('[name="stars"]:checked');
+      const stars = starsInput ? parseInt(starsInput.value) : 5;
 
-      // Зберігаємо у масив
-      const saved = JSON.parse(localStorage.getItem("userReviews")) || [];
-      saved.unshift({ name, comment, stars });
-      localStorage.setItem("userReviews", JSON.stringify(saved));
+      // 1. Малюємо на екрані
+      renderReview(name, comment, stars, true);
 
+      // 2. Додаємо в LocalStorage
+      const reviews = JSON.parse(localStorage.getItem("userReviews")) || [];
+      reviews.unshift({ name, comment, stars });
+      localStorage.setItem("userReviews", JSON.stringify(reviews));
+
+      // 3. Очищуємо форму
       addReviewForm.reset();
-      reviewsForm.classList.remove("show");
+      reviewsForm.style.display = "none";
       showFormBtn.textContent = "Залишити відгук";
-    });
+    };
   }
 
-  loadReviews(); // Запускаємо при старті
+  // ЗАПУСК: як тільки сторінка готова — вантажимо старі відгуки
+  loadReviewsFromStorage();
 });
-function deleteReviewFromStorage(name, comment) {
-  // 1. Отримуємо всі відгуки
-  let saved = JSON.parse(localStorage.getItem("userReviews")) || [];
-
-  // 2. Фільтруємо масив: залишаємо всі відгуки, крім того, що ми видаляємо
-  // (порівнюємо ім'я та текст коментаря)
-  saved = saved.filter((r) => r.name !== name || r.comment !== comment);
-
-  // 3. Зберігаємо оновлений список назад
-  localStorage.setItem("userReviews", JSON.stringify(saved));
-}
