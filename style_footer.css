@@ -1,0 +1,93 @@
+footer {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
+    url("img/Gemini_Generated_Image_ptmh42ptmh42ptmh.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* Розподіляємо контент по боках */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 40px 10%;
+  color: #402e21; /* Ваш основний колір тексту */
+}
+
+/* Приховуємо саму картинку з HTML, бо вона тепер на бекграунді */
+footer > img:first-child {
+  display: none;
+}
+
+/* Логотип та навігація (Ліва частина) */
+footer img[alt="logo1"] {
+  width: 120px; /* Налаштуйте розмір логотипу під себе */
+  margin-bottom: 20px;
+  border-radius: 50%;
+}
+
+footer nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* У стовпчик */
+  gap: 10px;
+}
+
+footer nav ul li a {
+  text-decoration: none;
+  color: #402e21;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+footer nav ul li a:hover {
+  color: #8c6a4a; /* Колір при наведенні */
+}
+
+/* Контакти (Права частина) */
+.contact {
+  text-align: right; /* Текст притиснутий до правого краю */
+}
+
+.contact h4 {
+  margin-bottom: 15px;
+  font-size: 28px;
+  font-family: "Playfair Display", serif;
+}
+
+.contact a {
+  display: inline-block;
+  margin-left: 10px;
+  transition: transform 0.3s;
+}
+
+.contact a:hover {
+  transform: scale(1.1); /* Легке збільшення іконок */
+}
+
+.contact img {
+  width: 25px; /* Розмір іконок соцмереж */
+  height: 25px;
+}
+
+.contact p {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: "Playfair Display", serif;
+}
+
+/* Адаптація для телефонів */
+@media (max-width: 768px) {
+  footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+  }
+  .contact {
+    text-align: center;
+  }
+}
