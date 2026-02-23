@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="style_products.css" />
     <link rel="stylesheet" href="style_reviews.css" />
     <link rel="stylesheet" href="style_footer.css" />
+    <link rel="stylesheet" href="style_delivery.css" />
 
     <script src="script.js" defer></script>
     <script src="script_reviews.js" defer></script>
@@ -23,6 +24,102 @@
   </head>
   <body>
     <div id="header-placeholder"></div>
+    <main class="delivery-page">
+      <section class="container">
+        <h1 class="page-title">Доставка та Оплата</h1>
+        <div class="info-grid">
+          <div class="info-card">
+            <div class="icon-box">🚚</div>
+            <h2>Доставка</h2>
+            <p>
+              Ми піклуємося про те, щоб ваші замовлення доїхали вчасно та
+              неушкодженими:
+            </p>
+            <ul>
+              <li>
+                <strong>Нова Пошта:</strong> у відділення або поштомат (1-3
+                дні).
+              </li>
+              <li>
+                <strong>Укрпошта:</strong> стандартна доставка по Україні (3-7
+                днів).
+              </li>
+              <li>
+                <strong>Самовивіз:</strong> можливість забрати замовлення
+                особисто за попередньою домовленістю.
+              </li>
+            </ul>
+            <p class="note">
+              🎁 Кожен виріб пакується у подарункову крафтову коробку!
+            </p>
+          </div>
+
+          <div class="info-card">
+            <div class="icon-box">💳</div>
+            <h2>Оплата</h2>
+            <p>Обирайте зручний для вас спосіб розрахунку:</p>
+            <ul>
+              <li>
+                <strong>Повна оплата:</strong> на картку Mono або Privat
+                (вигідно, бо немає комісії за переказ).
+              </li>
+              <li>
+                <strong>Накладений платіж:</strong> оплата при отриманні
+                (передоплата 150 грн).
+              </li>
+              <li>
+                <strong>Онлайн-оплата:</strong> через безпечну платіжну систему.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <hr class="divider" />
+
+        <section class="quick-order">
+          <h2>Оформити швидке замовлення</h2>
+          <p>
+            Залиште ваші дані, і ми зв'яжемося з вами для уточнення деталей.
+          </p>
+
+          <form id="order-form" class="delivery-form">
+            <div class="form-group">
+              <label for="order-name">Ваше ім'я:</label>
+              <input
+                type="text"
+                id="order-name"
+                name="name"
+                placeholder="Введіть ваше ім'я"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="order-phone">Номер телефону:</label>
+              <input
+                type="tel"
+                id="order-phone"
+                name="phone"
+                placeholder="+380..."
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="order-comment">Що ви хочете замовити?</label>
+              <textarea
+                id="order-comment"
+                placeholder="Наприклад: Зайчик зефірний, 2 шт."
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">
+              Підтвердити замовлення
+            </button>
+          </form>
+        </section>
+      </section>
+    </main>
 
     <div id="footer-placeholder"></div>
   </body>

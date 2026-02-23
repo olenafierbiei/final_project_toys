@@ -1,0 +1,80 @@
+.delivery-page {
+  padding: 60px 20px;
+  font-family: "Montserrat", sans-serif;
+  color: #402e21;
+}
+
+.page-title {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.info-card {
+  background: #fdfaf7;
+  padding: 30px;
+  border-radius: 15px;
+  border: 1px dashed #8c6a4a;
+}
+
+.icon-box {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.delivery-form {
+  max-width: 500px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn-submit {
+  background-color: #8c6a4a;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.btn-submit:hover {
+  background-color: #402e21;
+}
+
+@media (max-width: 768px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
