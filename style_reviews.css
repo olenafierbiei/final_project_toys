@@ -184,3 +184,12 @@ textarea {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   border: 1px solid #f0e6db;
 }
+/* Кнопки видалення приховані для всіх */
+.delete-btn {
+  display: none !important;
+}
+
+/* Клас, який ми увімкнемо лише для вас */
+body.admin-mode .delete-btn {
+  display: block !important;
+}
