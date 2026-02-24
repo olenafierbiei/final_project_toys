@@ -82,3 +82,138 @@
     width: 90%; /* На мобільному займають майже всю ширину */
   }
 }
+
+/*styles for blanket, toys and toys for baby*/
+#blankets {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(280px, 1fr)
+  ); /* Автоматична сітка */
+  gap: 30px;
+  padding: 40px 5%;
+  background-color: #fff;
+}
+/* Окрема картка товару */
+#blankets > div {
+  background: #fdfaf7;
+  border-radius: 15px;
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  border: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+}
+#blankets > div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Фото товару */
+#blankets img[alt^="blanket"] {
+  width: 100%;
+  height: 250px;
+  object-fit: cover; /* Зберігає пропорції фото */
+}
+
+/* Контейнер з інфою всередині картки */
+.info_product {
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+.info_product h4 {
+  font-family: "Playfair Display", serif;
+  color: #402e21;
+  font-size: 20px;
+  margin-bottom: 10px;
+  min-height: 44px; /* Для вирівнювання заголовків у ряд */
+}
+.info_product p {
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  color: #8c6a4a;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+/* Кнопка "В кошик" */
+.button_product {
+  background-color: #8c6a4a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  transition: background 0.3s;
+  font-family: "Playfair Display", serif;
+  margin: 20px 0;
+}
+
+.button_product:hover {
+  background-color: #402e21;
+}
+
+.button_product img {
+  width: 18px;
+  filter: brightness(0) invert(1); /* Робить іконку кошика білою */
+}
+
+/* Іконка серця (обране) */
+.wishlist-btn img[alt="heart"] {
+  position: absolute;
+  top: -50px;
+  right: 15px;
+  background: white;
+  padding: 8px;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.info_product img[alt="heart"]:hover {
+  transform: scale(1.1);
+}
+/* Блок вибору кількості */
+.quantity {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.qty-btn {
+  background: #fdfaf7;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.quantity input {
+  width: 100px;
+  text-align: center;
+  border: none;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  outline: none;
+}
+
+.section-title {
+  display: flex;
+  justify-content: center;
+  font-family: "Playfair Display", serif;
+  color: #402e21;
+  font-size: 36px;
+}
