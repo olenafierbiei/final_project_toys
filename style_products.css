@@ -7,7 +7,6 @@
 
 #products h2 {
   margin-bottom: 30px;
-  font-size: 2rem;
   color: #402e21;
   font-family: "Playfair Display", serif;
   font-size: 40px;
@@ -84,7 +83,9 @@
 }
 
 /*styles for blanket, toys and toys for baby*/
-#blankets {
+#blankets,
+#toys_for_baby,
+#toys {
   display: grid;
   grid-template-columns: repeat(
     auto-fit,
@@ -106,18 +107,59 @@
   display: flex;
   flex-direction: column;
 }
+#toys > div {
+  background: #fdfaf7;
+  border-radius: 15px;
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  border: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+}
+
+#toys_for_baby > div {
+  background: #fdfaf7;
+  border-radius: 15px;
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  border: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+}
 #blankets > div:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
 }
 
+#toys_for_baby > div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+#toys > div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
 /* Фото товару */
 #blankets img[alt^="blanket"] {
   width: 100%;
   height: 250px;
   object-fit: cover; /* Зберігає пропорції фото */
 }
-
+#toys_for_baby img[alt^="toy_for_baby1"] {
+  width: 100%;
+  height: 250px;
+  object-fit: cover; /* Зберігає пропорції фото */
+}
+#toys img[alt^="toy1"] {
+  width: 100%;
+  height: 250px;
+  object-fit: cover; /* Зберігає пропорції фото */
+}
 /* Контейнер з інфою всередині картки */
 .info_product {
   padding: 20px;
@@ -216,4 +258,37 @@
   font-family: "Playfair Display", serif;
   color: #402e21;
   font-size: 36px;
+}
+/*для toys_for_baby*/
+
+/* Контейнер одного елемента результату */
+.search-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  border-bottom: 1px solid #f2ebe1;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.search-item:hover {
+  background: #fdfaf7;
+}
+
+/* Стиль прев'ю картинки */
+.search-img-preview {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 1px solid #efe5db;
+}
+
+/* Текст назви */
+.search-name {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  color: #402e21;
+  font-weight: 500;
 }

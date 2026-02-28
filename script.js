@@ -86,37 +86,149 @@ let checkExist = setInterval(function () {
   }
 }, 500);
 
-/* Універсальний обробник для пошуку */
+/* обробник для пошуку */
 document.addEventListener("click", function (e) {
   const searchContainer = document.getElementById("search-container");
-  const searchIcon = document.getElementById("search-icon");
   const searchInput = document.getElementById("search-input");
 
-  // 1. Якщо натиснули на іконку пошуку — відкриваємо/закриваємо
+  // 1. Відкриття пошуку при кліку на іконку
   if (e.target.id === "search-icon" || e.target.closest("#search-icon")) {
-    searchContainer.classList.toggle("active");
-    if (searchContainer.classList.contains("active")) {
-      searchInput.focus();
+    if (searchContainer) {
+      searchContainer.style.setProperty("display", "block", "important");
+      if (searchInput) searchInput.focus();
+      console.log("Пошук відкритий");
     }
   }
-  // 2. Якщо натиснули на кнопку закриття (X)
-  else if (e.target.id === "search-close") {
-    searchContainer.classList.remove("active");
-  }
-  // 3. Якщо натиснули будь-де поза пошуком — закриваємо табличку
-  else if (searchContainer && !searchContainer.contains(e.target)) {
-    searchContainer.classList.remove("active");
+
+  // 2. Закриття пошуку при кліку на хрестик
+  if (e.target.id === "search-close") {
+    if (searchContainer) {
+      searchContainer.style.display = "none";
+      if (searchInput) searchInput.value = "";
+      document.getElementById("search-results").innerHTML = "";
+    }
   }
 });
 
-// Обробка Enter у полі пошуку
-document.addEventListener("keypress", function (e) {
-  const searchInput = document.getElementById("search-input");
-  if (e.key === "Enter" && document.activeElement === searchInput) {
-    const query = searchInput.value.trim();
-    if (query) {
-      alert("Ви шукаєте: " + query);
-      // Тут можна додати логіку фільтрації товарів
+// 3. Логіка самого пошуку
+document.addEventListener("input", function (e) {
+  if (e.target.id === "search-input") {
+    const query = e.target.value.toLowerCase().trim();
+    const resultsContainer = document.getElementById("search-results");
+
+    // База даних товарів по файлах
+    const allProducts = [
+      // Пледи (blanket.html)
+      { name: 'Плед "Ведмедик"', url: "blanket.html" },
+      { name: 'Плед "Серце"', url: "blanket.html" },
+      { name: 'Дитячий плед "Хмаринка"', url: "blanket.html" },
+
+      // Іграшки для малюків (toys_for_baby.html)
+      { name: "Брязкальце Зайка з бантиком", url: "toys_for_baby.html" },
+      { name: "Брязкальце Ведмедик", url: "toys_for_baby.html" },
+      { name: "Набір Ведмедик + Зайченя", url: "toys_for_baby.html" },
+
+      // Іграшки (toys.html)
+      { name: "В’язаний Зайчик", url: "toys.html" },
+      { name: "Ведмедик амігурумі", url: "toys.html" },
+      { name: "Лялька ручної роботи", url: "toys.html" },
+    ];
+
+    if (query.length > 1) {
+      const filtered = allProducts.filter((p) =>
+        p.name.toLowerCase().includes(query),
+      );
+
+      resultsContainer.innerHTML = filtered
+        .map(
+          (p) => `
+                <div class="search-item" onclick="window.location.href='${p.url}'">
+                    ${p.name}
+                </div>
+            `,
+        )
+        .join("");
+
+      resultsContainer.style.display = filtered.length ? "block" : "none";
+    } else {
+      resultsContainer.innerHTML = "";
+    }
+  }
+});
+
+document.addEventListener("input", function (e) {
+  if (e.target.id === "search-input") {
+    const query = e.target.value.toLowerCase().trim();
+    const resultsContainer = document.getElementById("search-results");
+
+    const allProducts = [
+      // Пледи
+      {
+        name: 'Плед "Ведмедик"',
+        url: "blanket.html",
+        image: "img/blankets/bear_blanket.png",
+      },
+      {
+        name: 'Плед "Серце"',
+        url: "blanket.html",
+        image: "img/blankets/heart_blanket.png",
+      },
+
+      {
+        name: `Плед "Мережево"`,
+        url: "blanket.html",
+        image: "img/blanket_for_children/img6.png",
+      },
+      // Іграшки для малюків
+      {
+        name: "Брязкальце Зайка",
+        url: "toys_for_baby.html",
+        image: "img/toys_for_babies/for_baby5.png",
+      },
+      {
+        name: "Брязкальце Ведмедик",
+        url: "toys_for_baby.html",
+        image: "img/toys_for_babies/for_baby3.png",
+      },
+      {
+        name: 'Набір "Ведмедик + Зайченя"',
+        url: "toys_for_baby.html",
+        image: "img/toys_for_babies/for_baby7.png",
+      },
+      {
+        name: 'Іграшка-брязкальце "Зайка з бантиком"',
+        url: "toys_for_baby.html",
+        image: "img/toys_for_babies/for_baby5.png",
+      },
+      //Іграшки
+      {
+        name: 'Іграшка-брязкальце "Зайка з бантиком"',
+        url: "toys_for_baby.html",
+        image: "img/toys_for_babies/for_baby5.png",
+      },
+    ];
+
+    if (query.length > 1) {
+      const filtered = allProducts.filter((p) =>
+        p.name.toLowerCase().includes(query),
+      );
+
+      resultsContainer.innerHTML = filtered
+        .map(
+          (p) => `
+                <div class="search-item" onclick="window.location.href='${p.url}'">
+                    <img src="${p.image}" alt="${p.name}" class="search-img-preview">
+                    <div class="search-info">
+                        <span class="search-name">${p.name}</span>
+                    </div>
+                </div>
+            `,
+        )
+        .join("");
+
+      resultsContainer.style.display = filtered.length ? "block" : "none";
+    } else {
+      resultsContainer.innerHTML = "";
     }
   }
 });

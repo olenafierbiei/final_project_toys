@@ -1,80 +1,199 @@
+/* Основні налаштування сторінки */
 .delivery-page {
-  padding: 60px 20px;
+  padding: 60px 5%;
+  background-color: #fdfaf7; /* Дуже світлий беж */
   font-family: "Montserrat", sans-serif;
   color: #402e21;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .page-title {
   text-align: center;
   font-family: "Playfair Display", serif;
-  font-size: 40px;
-  margin-bottom: 40px;
+  font-size: 38px;
+  margin-bottom: 50px;
+  color: #402e21;
 }
 
+/* Сітка з картками */
 .info-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  margin-bottom: 50px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  margin-bottom: 60px;
 }
 
 .info-card {
-  background: #fdfaf7;
-  padding: 30px;
-  border-radius: 15px;
-  border: 1px dashed #8c6a4a;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(140, 106, 74, 0.05);
+  border: 1px solid #efe5db;
+  transition: transform 0.3s ease;
 }
 
+.info-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Іконки (Машинка та Картка) */
 .icon-box {
-  font-size: 40px;
+  font-size: 50px;
+  margin-bottom: 20px;
+  background: #f2ebe1; /* Бежевий фон для іконки */
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  /* Фільтр для створення коричневого відтінку на емодзі (якщо потрібно змінити тон) */
+  filter: sepia(0.5) saturate(1.5) hue-rotate(350deg);
+}
+
+.info-card h2 {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  color: #8c6a4a; /* Коричневий */
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+.info-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.info-card ul li {
+  margin-bottom: 15px;
+  line-height: 1.6;
+  position: relative;
+  padding-left: 20px;
+  font-size: 16px;
+}
+
+/* Маленька крапочка перед списком */
+.info-card ul li::before {
+  content: "•";
+  color: #8c6a4a;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.note {
+  margin-top: 20px;
+  font-style: italic;
+  text-align: center;
+  color: #8c6a4a;
+  font-size: 16px;
+}
+
+/* Розділювач */
+.divider {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(140, 106, 74, 0),
+    rgba(140, 106, 74, 0.75),
+    rgba(140, 106, 74, 0)
+  );
+  margin: 60px 0;
+}
+
+/* Секція форми */
+.quick-order {
+  text-align: center;
+}
+
+.quick-order h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 36px;
   margin-bottom: 15px;
 }
 
+/* Сама форма у рамці */
 .delivery-form {
-  max-width: 500px;
-  margin: 0 auto;
+  max-width: 600px;
+  margin: 40px auto 0;
+  padding: 40px;
   background: #fff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 2px solid #8c6a4a; /* Коричнева рамка */
+  border-radius: 20px;
+  text-align: left;
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .form-group label {
   display: block;
+  font-weight: 600;
   margin-bottom: 8px;
-  font-weight: bold;
+  color: #402e21;
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 12px 15px;
+  border: 1px solid #efe5db;
+  border-radius: 8px;
+  font-family: "Playfair Display", serif;
+  outline: none;
+  transition: border-color 0.3s;
 }
 
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #8c6a4a;
+}
+
+.form-group textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+/* Кнопка */
 .btn-submit {
+  display: block;
+  width: 100%;
   background-color: #8c6a4a;
   color: white;
   border: none;
-  padding: 15px 30px;
-  border-radius: 5px;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
-  width: 100%;
-  font-size: 16px;
-  transition: 0.3s;
+  transition:
+    background 0.3s,
+    transform 0.2s;
 }
 
 .btn-submit:hover {
   background-color: #402e21;
+  transform: scale(1.02);
 }
 
+/* Адаптивність */
 @media (max-width: 768px) {
-  .info-grid {
-    grid-template-columns: 1fr;
+  .page-title {
+    font-size: 40px;
+  }
+  .delivery-form {
+    padding: 25px;
+    margin: 20px 10px;
+  }
+  .info-card {
+    padding: 25px;
   }
 }

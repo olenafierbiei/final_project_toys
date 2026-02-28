@@ -91,3 +91,14 @@ footer ul li a:hover {
     text-align: center;
   }
 }
+#search-container {
+  position: fixed; /* Або absolute, якщо він всередині wrapper */
+  top: 60px;
+  right: 20px;
+  z-index: 9999; /* Дуже високий пріоритет */
+  background: white;
+  padding: 15px;
+  border: 2px solid #8c6a4a;
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+}
