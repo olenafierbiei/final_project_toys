@@ -15,7 +15,7 @@ window.addEventListener("load", function () {
 
     const starContainer = document.createElement("div");
     starContainer.className = "star-rating";
-    for (let i = 5; i >= 1; i--) {
+    for (let i = 1; i <= 5; i++) {
       starContainer.innerHTML += `
                 <input type="radio" name="stars" value="${i}" id="star-${i}" ${i === 5 ? "checked" : ""}>
                 <label for="star-${i}">★</label>

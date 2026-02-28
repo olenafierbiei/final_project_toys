@@ -193,3 +193,15 @@ textarea {
 body.admin-mode .delete-btn {
   display: block !important;
 }
+.star-rating input {
+  display: none;
+}
+
+.star-rating label {
+  filter: contrast(0.001) sepia(2) saturate(2) brightness(1.2);
+  cursor: pointer;
+}
+
+.star-rating :checked ~ :not(:checked) + label {
+  filter: none;
+}
