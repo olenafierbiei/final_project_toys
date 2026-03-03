@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Створюємо HTML для кожного товару в кошику
     cartContainer.innerHTML = cart
       .map((item, index) => {
-        // Отримуємо ціну (тепер це чисте число завдяки зміні HTML)
         const priceNum = parseInt(item.price) || 0;
         const qty = parseInt(item.quantity) || 1;
         const subtotal = priceNum * qty;

@@ -166,12 +166,12 @@ document.addEventListener("input", function (e) {
       {
         name: 'Плед "Ведмедик"',
         url: "blanket.html",
-        image: "img/blankets/bear_blanket.png",
+        image: "img/blanket_for_children/img4.png",
       },
       {
         name: 'Плед "Серце"',
         url: "blanket.html",
-        image: "img/blankets/heart_blanket.png",
+        image: "img/blanket_for_children/img5.png",
       },
 
       {
@@ -202,9 +202,39 @@ document.addEventListener("input", function (e) {
       },
       //Іграшки
       {
-        name: 'Іграшка-брязкальце "Зайка з бантиком"',
-        url: "toys_for_baby.html",
-        image: "img/toys_for_babies/for_baby5.png",
+        name: 'Іграшка "Совушка"',
+        url: "toys.html",
+        image: "img/toys/toy2.png",
+      },
+      {
+        name: 'Іграшка-брелок "Міньйон"',
+        url: "toys.html",
+        image: "img/toys/toy4.png",
+      },
+      {
+        name: 'Іграшка "Зайка"',
+        url: "toys.html",
+        image: "img/toys/toy5.png",
+      },
+      {
+        name: 'Іграшка "Мішка"',
+        url: "toys.html",
+        image: "img/toys/toy7.png",
+      },
+      {
+        name: 'Іграшка "Зайка з шапочкою"',
+        url: "toys.html",
+        image: "img/toys/toy9.png",
+      },
+      {
+        name: 'Іграшка-лялька "Червоний капелюшок"',
+        url: "toys.html",
+        image: "img/toys/toy8.png",
+      },
+      {
+        name: 'Іграшка "Печенька"',
+        url: "toys.html",
+        image: "img/toys/toy1.png",
       },
     ];
 
@@ -272,6 +302,5 @@ document.addEventListener("click", function (e) {
 
     localStorage.setItem("userCart", JSON.stringify(cart));
     updateCartUI();
-    alert(`"${name}" додано до кошика!`);
   }
 });
