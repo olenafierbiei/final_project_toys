@@ -2,6 +2,7 @@
   <div class="logo">
     <img src="img/logo1.png" alt="logo1" />
   </div>
+
   <nav>
     <div class="burger-menu" id="burger-menu">
       <span></span>
@@ -16,24 +17,51 @@
       <li><a href="#contacts">Контакти</a></li>
     </ul>
   </nav>
-  <div>
-    <a href=""><img src="svg/user.svg" alt="user" /></a>
-  <a href="card.html" id="cart-btn" style="position: relative; display: inline-block;">
-    <img src="svg/bracket.svg" alt="bracket" style="width: 24px;" />
-    <span id="cart-count">0</span>
-  </a>
-    <div class="search-wrapper">
-      <img
-        src="svg/search.svg"
-        alt="search"
-        id="search-icon"
-        style="cursor: pointer; width: 24px"
-      />
 
-  <div id="search-container">
-    <button id="search-close">×</button>
-    <input type="text" id="search-input" placeholder="Введіть назву іграшки..." />
-    <div id="search-results"></div>
-</div>
+  <div class="buttons">
+    <button href="" id="profile-btn">
+      <img src="svg/user.svg" alt="user" />
+    </button>
+
+    <a href="card.html" id="cart-btn" style="position: relative; display: inline-block">
+      <img src="svg/bracket.svg" alt="bracket" style="width: 24px" />
+      <span id="cart-count">0</span>
+    </a>
+
+    <div class="search-wrapper">
+      <img src="svg/search.svg" alt="search" id="search-icon" style="cursor: pointer; width: 24px" />
+      <div id="search-container">
+        <button id="search-close">×</button>
+        <input type="text" id="search-input" placeholder="Введіть назву іграшки..." />
+        <div id="search-results"></div>
+      </div>
+    </div>
   </div>
+
+  <dialog id="modal">
+    <form id="login-form">
+      <h2>Вхід</h2>
+      <div class="form-row">
+        <input type="text" placeholder="email">
+      </div>
+      <div class="form-row">
+        <input type="text" placeholder="пароль">
+      </div>
+      <p>Не маєте облікового запису? <br> <a href="">Зареєструватися</a></p>
+    </form>
+
+    <form action="" id="reg-form" hidden>
+      <h2>Реєстрація</h2>
+      <div class="form-row">
+        <input type="text" placeholder="email">
+      </div>
+      <div class="form-row">
+        <input type="text" placeholder="пароль">
+      </div>
+      <div class="form-row">
+        <input type="text" placeholder="повторіть">
+      </div>
+      <p>Вже маєте обліковий запис? <br> <a href="">Увійти</a></p>
+    </form>
+  </dialog>
 </header>

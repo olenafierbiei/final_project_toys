@@ -78,13 +78,41 @@ function initBurgerMenu() {
   }
 }
 
+function initAuthModal() {
+  const profileBtn = document.getElementById("profile-btn");
+  const modal = document.getElementById("modal");
+  const loginForm = document.getElementById("login-form");
+  const regForm = document.getElementById("reg-form");
+  const regLink = loginForm.querySelector("a");
+  const loginLink = regForm.querySelector("a");
+
+  profileBtn.addEventListener("click", function () {
+    modal.showModal();
+  });
+
+  regLink.addEventListener("click", function (e) {
+    e.preventDefault();
+    regForm.hidden = false;
+    loginForm.hidden = true;
+  });
+
+  loginLink.addEventListener("click", function (e) {
+    e.preventDefault();
+    loginForm.hidden = false;
+    regForm.hidden = true;
+  });
+}
+
 // Запускаємо перевірку кожну секунду, поки меню не з'явиться (для include.js)
 let checkExist = setInterval(function () {
   if (document.getElementById("burger-menu")) {
     initBurgerMenu();
+    initAuthModal();
     clearInterval(checkExist);
   }
 }, 500);
+
+
 
 /* обробник для пошуку */
 document.addEventListener("click", function (e) {

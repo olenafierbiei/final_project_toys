@@ -71,19 +71,32 @@ header div:last-child img:hover {
   transition: 0.3s;
 }
 
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  background: none;
+  border: none;
+  outline: none;
+}
+
 /* --- МОБІЛЬНА АДАПТАЦІЯ (max-width: 992px) --- */
-/* Стилі для мобільної версії (max-width: 992px) */
 @media (max-width: 992px) {
   .nav-links {
     position: fixed;
     left: 0;
-    top: -100%; /* Меню сховане зверху */
+    top: -100%;
+    /* Меню сховане зверху */
     width: 100%;
-    height: auto; /* Висота підлаштовується під контент */
+    height: auto;
+    /* Висота підлаштовується під контент */
     background-color: #fdfaf7;
     flex-direction: column;
     align-items: center;
-    padding: 80px 0 40px 0; /* Відступ зверху, щоб не перекривати лого */
+    padding: 80px 0 40px 0;
+    /* Відступ зверху, щоб не перекривати лого */
     transition: all 0.5s ease-in-out;
     z-index: 999;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -96,16 +109,19 @@ header div:last-child img:hover {
 
   .burger-menu {
     display: flex;
-    z-index: 1001; /* Бургер завжди має бути над меню */
+    z-index: 1001;
+    /* Бургер завжди має бути над меню */
   }
 
   /* Анімація бургера у хрестик (щоб було зрозуміло, як закрити) */
   .burger-menu.open span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 6px);
   }
+
   .burger-menu.open span:nth-child(2) {
     opacity: 0;
   }
+
   .burger-menu.open span:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -7px);
   }
@@ -123,7 +139,8 @@ header div:last-child img:hover {
   border: 2px solid #8c6a4a;
   border-radius: 8px;
   padding: 8px 12px;
-  display: flex; /* Тримаємо flex для структури */
+  display: flex;
+  /* Тримаємо flex для структури */
   gap: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 2000;
@@ -160,17 +177,24 @@ header div:last-child img:hover {
 
 /* Примусові стилі для вікна пошуку */
 #search-container {
-  display: none; /* Керується через JS */
-  position: fixed !important; /* Фіксація відносно екрана */
-  top: 100px !important; /* Відступ зверху */
-  right: 20px !important; /* Відступ справа */
+  display: none;
+  /* Керується через JS */
+  position: fixed !important;
+  /* Фіксація відносно екрана */
+  top: 100px !important;
+  /* Відступ зверху */
+  right: 20px !important;
+  /* Відступ справа */
   width: 300px !important;
   min-height: 100px !important;
-  background-color: #ffffff !important; /* Білий фон обов'язково */
-  border: 2px solid #8c6a4a !important; /* Коричнева рамка */
+  background-color: #ffffff !important;
+  /* Білий фон обов'язково */
+  border: 2px solid #8c6a4a !important;
+  /* Коричнева рамка */
   border-radius: 12px !important;
   padding: 20px !important;
-  z-index: 999999 !important; /* Поверх усіх елементів */
+  z-index: 999999 !important;
+  /* Поверх усіх елементів */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
 }
 
@@ -201,7 +225,8 @@ header div:last-child img:hover {
   position: absolute;
   top: -8px;
   right: -8px;
-  background-color: #8c6a4a; /* Ваш фірмовий коричневий */
+  background-color: #8c6a4a;
+  /* Ваш фірмовий коричневий */
   color: white;
   font-size: 11px;
   font-weight: bold;
@@ -211,12 +236,18 @@ header div:last-child img:hover {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  border: 2px solid #fff; /* Біла обводка, щоб не зливалося */
-  opacity: 0; /* Спочатку ховаємо */
+  border: 2px solid #fff;
+  /* Біла обводка, щоб не зливалося */
+  opacity: 0;
+  /* Спочатку ховаємо */
   transition: opacity 0.3s ease;
 }
 
 /* Показуємо, якщо число більше 0 */
 #cart-count.visible {
   opacity: 1;
+}
+
+#modal {
+  text-align: center;
 }
