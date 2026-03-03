@@ -196,3 +196,27 @@ header div:last-child img:hover {
   cursor: pointer;
   color: #8c6a4a;
 }
+
+#cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #8c6a4a; /* Ваш фірмовий коричневий */
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid #fff; /* Біла обводка, щоб не зливалося */
+  opacity: 0; /* Спочатку ховаємо */
+  transition: opacity 0.3s ease;
+}
+
+/* Показуємо, якщо число більше 0 */
+#cart-count.visible {
+  opacity: 1;
+}

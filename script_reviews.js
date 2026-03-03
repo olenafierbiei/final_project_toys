@@ -6,45 +6,41 @@ window.addEventListener("load", function () {
 
   if (!reviewContainer) return;
 
-  // --- 1. СТВОРЕННЯ ЗІРОЧОК У ФОРМІ (якщо їх там немає) ---
+  // --- 1. СТВОРЕННЯ ЗІРОЧОК ---
   function setupFormStars() {
-    if (!addReviewForm) return;
-
-    // Перевіряємо, чи ми вже додали зірочки раніше
-    if (addReviewForm.querySelector(".star-rating")) return;
+    if (!addReviewForm || addReviewForm.querySelector(".star-rating")) return;
 
     const starContainer = document.createElement("div");
     starContainer.className = "star-rating";
-    for (let i = 1; i <= 5; i++) {
+    // Створюємо від 5 до 1 для коректної роботи CSS-фільтрів
+    for (let i = 5; i >= 1; i--) {
       starContainer.innerHTML += `
-                <input type="radio" name="stars" value="${i}" id="star-${i}" ${i === 5 ? "checked" : ""}>
-                <label for="star-${i}">★</label>
-            `;
+        <input type="radio" name="stars" value="${i}" id="star-${i}" ${i === 5 ? "checked" : ""}>
+        <label for="star-${i}">★</label>
+      `;
     }
-    // Вставляємо зірочки в самий початок форми
     addReviewForm.prepend(starContainer);
   }
 
-  // --- 2. ФУНКЦІЯ МАЛЮВАННЯ КАРТКИ ---
+  // --- 2. МАЛЮВАННЯ КАРТКИ ТА ПРОКРУТКА ---
   function renderReview(name, comment, stars, isNew = true) {
-    // Перетворюємо stars на число, якщо воно прийшло як рядок
     const count = parseInt(stars) || 5;
     const div = document.createElement("div");
     div.className = "review-card";
 
     div.innerHTML = `
-            <button class="delete-btn" title="Видалити">&times;</button>
-            <div class="user-info">
-                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="user-avatar" />
-                <div>
-                    <h4 class="user-name">${name}</h4>
-                    <div class="rating">${"⭐".repeat(count)}</div>
-                </div>
-            </div>
-            <p class="review-text">«${comment}»</p>
-        `;
+      <button class="delete-btn" title="Видалити">&times;</button>
+      <div class="user-info">
+        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="user-avatar" />
+        <div>
+          <h4 class="user-name">${name}</h4>
+          <div class="rating">${"⭐".repeat(count)}</div>
+        </div>
+      </div>
+      <p class="review-text">«${comment}»</p>
+    `;
 
-    // Кнопка видалення (буде прихована вашим CSS, поки ви не введете пароль)
+    // Видалення
     div.querySelector(".delete-btn").onclick = function () {
       if (document.body.classList.contains("admin-mode")) {
         if (confirm("Видалити цей відгук?")) {
@@ -52,23 +48,27 @@ window.addEventListener("load", function () {
           div.remove();
         }
       } else {
-        alert("Тільки адміністратор може видаляти відгуки.");
+        alert("Доступ заборонено.");
       }
     };
 
-    isNew ? reviewContainer.prepend(div) : reviewContainer.appendChild(div);
+    // Додаємо картку
+    if (isNew) {
+      reviewContainer.prepend(div);
+      // ПРОКРУТКА ДО НОВОГО ВІДГУКУ
+      reviewContainer.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+      reviewContainer.appendChild(div);
+    }
   }
 
-  // --- 3. ЗБЕРЕЖЕННЯ ТА ЗАВАНТАЖЕННЯ ---
+  // --- 3. LOCAL STORAGE ---
   function loadReviewsFromStorage() {
-    const savedData = localStorage.getItem("userReviews");
-    if (savedData) {
-      const reviews = JSON.parse(savedData);
-      reviews.forEach((rev) => {
-        // Передаємо збережену кількість зірок
-        renderReview(rev.name, rev.comment, rev.stars, false);
-      });
-    }
+    const saved = JSON.parse(localStorage.getItem("userReviews")) || [];
+    // Використовуємо reverse, щоб при послідовному додаванні через append зберегти порядок
+    saved
+      .reverse()
+      .forEach((rev) => renderReview(rev.name, rev.comment, rev.stars, false));
   }
 
   function removeReviewFromStorage(name, comment) {
@@ -77,31 +77,26 @@ window.addEventListener("load", function () {
     localStorage.setItem("userReviews", JSON.stringify(reviews));
   }
 
-  // --- 4. КНОПКА ПОКАЗУ ФОРМИ ---
+  // --- 4. УПРАВЛІННЯ ФОРМОЮ ---
   if (showFormBtn && reviewsForm) {
     showFormBtn.onclick = function () {
       const isHidden =
-        reviewsForm.style.display === "none" ||
-        reviewsForm.style.display === "";
+        reviewsForm.style.display === "none" || !reviewsForm.style.display;
       reviewsForm.style.display = isHidden ? "block" : "none";
       showFormBtn.textContent = isHidden ? "Закрити" : "Залишити відгук";
     };
   }
 
-  // --- 5. ВІДПРАВКА ФОРМИ ---
   if (addReviewForm) {
     addReviewForm.onsubmit = function (e) {
       e.preventDefault();
-
       const name = addReviewForm.querySelector('[name="name"]').value;
       const comment = addReviewForm.querySelector('[name="comment"]').value;
-      const starsInput = addReviewForm.querySelector('[name="stars"]:checked');
-      const stars = starsInput ? parseInt(starsInput.value) : 5;
+      const stars =
+        addReviewForm.querySelector('[name="stars"]:checked')?.value || 5;
 
-      // Малюємо
       renderReview(name, comment, stars, true);
 
-      // Зберігаємо
       const reviews = JSON.parse(localStorage.getItem("userReviews")) || [];
       reviews.unshift({ name, comment, stars });
       localStorage.setItem("userReviews", JSON.stringify(reviews));
@@ -112,19 +107,18 @@ window.addEventListener("load", function () {
     };
   }
 
-  // ПАРОЛЬ АДМІНІСТРАТОРА (Ctrl + Shift + A)
+  // --- 5. АДМІН-РЕЖИМ (Ctrl + Shift + A) ---
   document.addEventListener("keydown", function (e) {
     if (e.ctrlKey && e.shiftKey && e.code === "KeyA") {
-      const pass = prompt("Введіть пароль для видалення:");
-      if (pass === "1234") {
-        // Встановіть свій пароль тут
-        document.body.classList.add("admin-mode");
-        alert("Режим адміна увімкнено. Тепер кнопки видалення працюють.");
+      if (prompt("Пароль:") === "1234") {
+        document.body.classList.toggle("admin-mode");
+        alert("Режим адміністратора змінено.");
       }
     }
   });
 
-  // Запуск усього
   setupFormStars();
   loadReviewsFromStorage();
 });
+
+// --- 6. РУЧНА ПРОКРУТКА КНОПКАМИ ---

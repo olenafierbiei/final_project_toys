@@ -1,3 +1,4 @@
+/* Заголовки */
 .container h2 {
   display: flex;
   justify-content: center;
@@ -6,26 +7,46 @@
   font-family: "Playfair Display", serif;
   font-size: 40px;
 }
-/* Контейнер для відгуків */
 
+/* Батьківський контейнер секції */
+.reviews-section .container {
+  overflow: hidden;
+  position: relative;
+  padding: 20px 0;
+}
+
+/* Контейнер для відгуків - ГОРИЗОНТАЛЬНА ПРОКРУТКА */
 .reviews-container {
-  display: flex;
-  flex-wrap: wrap;
+  display: flex !important;
+  flex-wrap: nowrap !important; /* Все в одну лінію */
   gap: 20px;
-  justify-content: center;
-  margin-bottom: 40px;
+  padding: 20px;
+  overflow-x: auto !important; /* Скрол вліво-вправо */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  /* Ховаємо стандартний скролбар */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.reviews-container::-webkit-scrollbar {
+  height: 8px;
+  display: block !important;
 }
 
 /* Картка відгуку */
 .review-card {
+  flex: 0 0 300px !important; /* Фіксована ширина, не стискається */
   background: #fff;
   border-radius: 15px;
   padding: 20px;
-  width: 300px; /* Ширина кожної картки */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   border: 1px solid #f0e6db;
+  width: 300px !important; /* Жорстка ширина */
+  min-width: 300px !important;
 }
 
+/* Інформація про користувача */
 .user-info {
   display: flex;
   align-items: center;
@@ -36,7 +57,7 @@
 .user-avatar {
   width: 50px;
   height: 50px;
-  border-radius: 50%; /* Робимо аватар круглим */
+  border-radius: 50%;
   object-fit: cover;
 }
 
@@ -51,22 +72,24 @@
   line-height: 1.5;
 }
 
-/* Стилі для форми */
+/* Форма відгуків */
 .reviews-form-container {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 20px auto;
   background: #fdfaf7;
   padding: 30px;
   border-radius: 20px;
-  display: none; /* ПРИХОВАНО ЗА ЗАМОВЧУВАННЯМ */
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  display: none; /* Сховано за замовчуванням */
 }
 
-.reviews-form-container.active {
-  display: block; /* ПОКАЗУЄМО, КОЛИ ДОДАЄТЬСЯ КЛАС active */
+/* Класи для показу форми через JS */
+.reviews-form-container.active,
+.reviews-form-container.show {
+  display: block;
 }
 
-/* Кнопка "Написати відгук" */
+/* Кнопки та поля */
 .toggle-form-btn {
   display: block;
   margin: 20px auto;
@@ -84,7 +107,6 @@
   background-color: #402e21;
 }
 
-/* Поля форми */
 .form-row {
   display: flex;
   gap: 10px;
@@ -110,89 +132,21 @@ textarea {
   cursor: pointer;
   font-size: 16px;
 }
-/* Відгуки в рядок */
-.reviews-container {
-  display: flex;
-  flex-wrap: wrap; /* Дозволяє карткам переноситися, якщо мало місця */
-  gap: 20px;
-  justify-content: center;
-  padding: 20px 0;
-}
 
-.review-card {
-  flex: 0 1 300px; /* Картка не більше 300px */
-  border: 1px solid #ddd;
-  padding: 15px;
-  border-radius: 10px;
-  background: #fff;
-}
-
-/* Форма */
-.reviews-form-container {
-  display: none; /* СПОЧАТКУ ПРИХОВАНО */
-  margin-top: 20px;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #f9f4f0;
-}
-
-/* Клас, який ми будемо додавати через JS */
-.reviews-form-container.show {
-  display: block;
-}
-
-.toggle-form-btn {
-  display: block;
-  margin: 20px auto;
-  padding: 10px 20px;
+/* Адмін-панель (Видалення) */
+.delete-btn {
+  display: none !important;
+  position: absolute;
+  top: 10px;
+  right: 10px;
   cursor: pointer;
 }
 
-/* Батьківський контейнер, який обрізає все, що виходить за край */
-.reviews-section .container {
-  overflow: hidden;
-  position: relative;
-  padding: 20px 0;
-}
-
-/* Контейнер зі слайдами */
-.reviews-container {
-  display: flex;
-  flex-wrap: nowrap; /* Важливо: не дозволяємо карткам переноситися на новий рядок */
-  gap: 20px;
-  padding: 20px;
-
-  /* Додаємо автоматичну прокрутку */
-  overflow-x: auto; /* Дозволяє крутити пальцем на телефонах */
-  scroll-behavior: smooth;
-
-  /* Ховаємо смугу прокрутки для охайності */
-  -ms-overflow-style: none; /* для IE та Edge */
-  scrollbar-width: none; /* для Firefox */
-}
-
-.reviews-container::-webkit-scrollbar {
-  display: none; /* для Chrome, Safari та Opera */
-}
-
-/* Картка відгуку */
-.review-card {
-  flex: 0 0 300px; /* Картка завжди має ширину 300px і не стискається */
-  background: #fff;
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  border: 1px solid #f0e6db;
-}
-/* Кнопки видалення приховані для всіх */
-.delete-btn {
-  display: none !important;
-}
-
-/* Клас, який ми увімкнемо лише для вас */
 body.admin-mode .delete-btn {
   display: block !important;
 }
+
+/* Зірки */
 .star-rating input {
   display: none;
 }
@@ -200,6 +154,7 @@ body.admin-mode .delete-btn {
 .star-rating label {
   filter: contrast(0.001) sepia(2) saturate(2) brightness(1.2);
   cursor: pointer;
+  font-size: 25px;
 }
 
 .star-rating :checked ~ :not(:checked) + label {

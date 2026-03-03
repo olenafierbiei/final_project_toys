@@ -232,3 +232,46 @@ document.addEventListener("input", function (e) {
     }
   }
 });
+
+// Функція оновлення лічильника в хедері (має бути в script.js)
+function updateCartUI() {
+  const cartCountElement = document.getElementById("cart-count");
+  if (!cartCountElement) return;
+  const cart = JSON.parse(localStorage.getItem("userCart")) || [];
+  const totalItems = cart.reduce(
+    (sum, item) => sum + (parseInt(item.quantity) || 0),
+    0,
+  );
+  cartCountElement.innerText = totalItems;
+  cartCountElement.style.display = totalItems > 0 ? "flex" : "none";
+}
+
+document.addEventListener("click", function (e) {
+  // Шукаємо клік по кнопці "Замовити"
+  if (e.target.classList.contains("button_product")) {
+    const card = e.target.closest(".info_product");
+    if (!card) return;
+
+    const name = card.querySelector("h4").innerText;
+    // Отримуємо ціну і залишаємо ТІЛЬКИ цифри (наприклад, "500 грн" -> 500)
+    const rawPrice = card.querySelector("p").innerText;
+    const priceNum = parseInt(rawPrice.replace(/\D/g, "")) || 0;
+
+    const qtyInput = card.querySelector(".quantity input");
+    const quantity = qtyInput ? parseInt(qtyInput.value) : 1;
+
+    let cart = JSON.parse(localStorage.getItem("userCart")) || [];
+
+    const existingItem = cart.find((item) => item.name === name);
+    if (existingItem) {
+      existingItem.quantity += quantity;
+    } else {
+      // Зберігаємо вже чисте числове значення ціни
+      cart.push({ name, price: priceNum, quantity });
+    }
+
+    localStorage.setItem("userCart", JSON.stringify(cart));
+    updateCartUI();
+    alert(`"${name}" додано до кошика!`);
+  }
+});
