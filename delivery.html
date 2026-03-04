@@ -1,128 +1,115 @@
 <!doctype html>
 <html lang="uk">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Delius+Unicase:wght@400;700&family=Farro:wght@300;400;500;700&family=Francois+One&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:wght@800&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+NZ+Basic+Guides&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@1,600&family=Work+Sans:ital,wght@1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="icon" type="image/png" href="img/logo1.png" sizes="32x32" />
-    <title>KnitWonders | В'язані іграшки та пледи</title>
-    <link rel="stylesheet" href="style_hero.css" />
-    <link rel="stylesheet" href="style_header.css" />
-    <link rel="stylesheet" href="style_products.css" />
-    <link rel="stylesheet" href="style_reviews.css" />
-    <link rel="stylesheet" href="style_footer.css" />
-    <link rel="stylesheet" href="style_delivery.css" />
 
-    <script src="script.js" defer></script>
-    <script src="script_reviews.js" defer></script>
-    <script src="include.js" defer></script>
-    <script src="script_catalog.js" defer></script>
-    <script src="script_card.js" defer></script>
-  </head>
-  <body>
-    <div id="header-placeholder"></div>
-    <main class="delivery-page">
-      <section class="container">
-        <h1 class="page-title">Доставка та Оплата</h1>
-        <div class="info-grid">
-          <div class="info-card">
-            <div class="icon-box">🚚</div>
-            <h2>Доставка</h2>
-            <p>
-              Ми піклуємося про те, щоб ваші замовлення доїхали вчасно та
-              неушкодженими:
-            </p>
-            <ul>
-              <li>
-                <strong>Нова Пошта:</strong> у відділення або поштомат (1-3
-                дні).
-              </li>
-              <li>
-                <strong>Укрпошта:</strong> стандартна доставка по Україні (3-7
-                днів).
-              </li>
-              <li>
-                <strong>Самовивіз:</strong> можливість забрати замовлення
-                особисто за попередньою домовленістю.
-              </li>
-            </ul>
-            <p class="note">
-              🎁 Кожен виріб пакується у подарункову крафтову коробку!
-            </p>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Delius+Unicase:wght@400;700&family=Farro:wght@300;400;500;700&family=Francois+One&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:wght@800&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+NZ+Basic+Guides&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@1,600&family=Work+Sans:ital,wght@1,100..900&display=swap"
+    rel="stylesheet" />
+  <link rel="icon" type="image/png" href="img/logo1.png" sizes="32x32" />
+  <title>KnitWonders |В'язані іграшки та пледи</title>
+  <link rel="stylesheet" href="style_hero.css" />
+  <link rel="stylesheet" href="style_header.css" />
+  <link rel="stylesheet" href="style_products.css" />
+  <link rel="stylesheet" href="style_reviews.css" />
+  <link rel="stylesheet" href="style_footer.css" />
+  <link rel="stylesheet" href="style_delivery.css" />
 
-          <div class="info-card">
-            <div class="icon-box">💳</div>
-            <h2>Оплата</h2>
-            <p>Обирайте зручний для вас спосіб розрахунку:</p>
-            <ul>
-              <li>
-                <strong>Повна оплата:</strong> на картку Mono , Googlepay або
-                Paypal (вигідно, бо немає комісії за переказ).
-              </li>
-              <li>
-                <strong>Накладений платіж:</strong> оплата при отриманні
-                (передоплата 150 грн).
-              </li>
-              <li>
-                <strong>Онлайн-оплата:</strong> через безпечну платіжну систему.
-              </li>
-            </ul>
-          </div>
+  <script src="script.js" defer></script>
+  <script src="script_reviews.js" defer></script>
+  <script src="include.js" defer></script>
+  <script src="script_catalog.js" defer></script>
+  <script src="script_card.js" defer></script>
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+  <main class="delivery-page">
+    <section class="container">
+      <h1 class="page-title">Доставка та Оплата</h1>
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="icon-box">🚚</div>
+          <h2>Доставка</h2>
+          <p>
+            Ми піклуємося про те, щоб ваші замовлення доїхали вчасно та
+            неушкодженими:
+          </p>
+          <ul>
+            <li>
+              <strong>Нова Пошта:</strong> у відділення або поштомат (1-3
+              дні).
+            </li>
+            <li>
+              <strong>Укрпошта:</strong> стандартна доставка по Україні (3-7
+              днів).
+            </li>
+            <li>
+              <strong>Самовивіз:</strong> можливість забрати замовлення
+              особисто за попередньою домовленістю.
+            </li>
+          </ul>
+          <p class="note">
+            🎁 Кожен виріб пакується у подарункову крафтову коробку!
+          </p>
         </div>
 
-        <hr class="divider" />
+        <div class="info-card">
+          <div class="icon-box">💳</div>
+          <h2>Оплата</h2>
+          <p>Обирайте зручний для вас спосіб розрахунку:</p>
+          <ul>
+            <li>
+              <strong>Повна оплата:</strong> на картку Mono , Googlepay або
+              Paypal (вигідно, бо немає комісії за переказ).
+            </li>
+            <li>
+              <strong>Накладений платіж:</strong> оплата при отриманні
+              (передоплата 150 грн).
+            </li>
+            <li>
+              <strong>Онлайн-оплата:</strong> через безпечну платіжну систему.
+            </li>
+          </ul>
+        </div>
+      </div>
 
-        <section class="quick-order">
-          <h2>Оформити швидке замовлення</h2>
-          <p>
-            Залиште ваші дані, і ми зв'яжемося з вами для уточнення деталей.
-          </p>
+      <hr class="divider" />
 
-          <form id="order-form" class="delivery-form">
-            <div class="form-group">
-              <label for="order-name">Ваше ім'я:</label>
-              <input
-                type="text"
-                id="order-name"
-                name="name"
-                placeholder="Введіть ваше ім'я"
-                required
-              />
-            </div>
+      <section class="quick-order">
+        <h2>Оформити швидке замовлення</h2>
+        <p>
+          Залиште ваші дані, і ми зв'яжемося з вами для уточнення деталей.
+        </p>
 
-            <div class="form-group">
-              <label for="order-phone">Номер телефону:</label>
-              <input
-                type="tel"
-                id="order-phone"
-                name="phone"
-                placeholder="+380..."
-                required
-              />
-            </div>
+        <form id="order-form" class="delivery-form">
+          <div class="form-group">
+            <label for="order-name">Ваше ім'я:</label>
+            <input type="text" id="order-name" name="name" placeholder="Введіть ваше ім'я" required />
+          </div>
 
-            <div class="form-group">
-              <label for="order-comment">Що ви хочете замовити?</label>
-              <textarea
-                id="order-comment"
-                placeholder="Наприклад: Зайчик зефірний, 2 шт."
-              ></textarea>
-            </div>
+          <div class="form-group">
+            <label for="order-phone">Номер телефону:</label>
+            <input type="tel" id="order-phone" name="phone" placeholder="+380..." required />
+          </div>
 
-            <button type="submit" class="btn-submit">
-              Підтвердити замовлення
-            </button>
-          </form>
-        </section>
+          <div class="form-group">
+            <label for="order-comment">Що ви хочете замовити?</label>
+            <textarea id="order-comment" placeholder="Наприклад: Зайчик зефірний, 2 шт."></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit">
+            Підтвердити замовлення
+          </button>
+        </form>
       </section>
-    </main>
+    </section>
+  </main>
 
-    <div id="footer-placeholder"></div>
-  </body>
+  <div id="footer-placeholder"></div>
+</body>
+
 </html>
