@@ -77,32 +77,45 @@ function initBurgerMenu() {
     console.log("Меню успішно ініціалізовано!");
   }
 }
-
+/*код для модального вікна*/
 function initAuthModal() {
   const profileBtn = document.getElementById("profile-btn");
   const modal = document.getElementById("modal");
+  const closeModal = document.getElementById("close-modal"); // Нова кнопка
   const loginForm = document.getElementById("login-form");
   const regForm = document.getElementById("reg-form");
   const regLink = loginForm.querySelector("a");
   const loginLink = regForm.querySelector("a");
 
+  // Відкриття модалки
   profileBtn.addEventListener("click", function () {
     modal.showModal();
   });
 
+  // ЗАКРИТТЯ модалки
+  closeModal.addEventListener("click", function () {
+    modal.close();
+  });
+
+  // Перемикання на реєстрацію
   regLink.addEventListener("click", function (e) {
     e.preventDefault();
     regForm.hidden = false;
     loginForm.hidden = true;
   });
 
+  // Перемикання на вхід
   loginLink.addEventListener("click", function (e) {
     e.preventDefault();
     loginForm.hidden = false;
     regForm.hidden = true;
   });
-}
 
+  // Закриття при кліку на фон (бекдроп)
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) modal.close();
+  });
+}
 // Запускаємо перевірку кожну секунду, поки меню не з'явиться (для include.js)
 let checkExist = setInterval(function () {
   if (document.getElementById("burger-menu")) {

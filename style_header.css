@@ -200,8 +200,9 @@ button {
 
 /* Стиль для самого поля вводу всередині */
 #search-input {
+  margin-top: 20px;
   width: 100% !important;
-  padding: 10px !important;
+  padding: 5px !important;
   margin-bottom: 10px !important;
   border: 1px solid #ccc !important;
   border-radius: 5px !important;
@@ -250,4 +251,109 @@ button {
 
 #modal {
   text-align: center;
+}
+
+/* Стилізація самого діалогу */
+#modal {
+  border: none;
+  border-radius: 20px;
+  padding: 40px;
+  width: 350px;
+  background-color: #fdfaf7;
+  /* Світло-бежевий фон під сайт */
+  box-shadow: 0 10px 30px rgba(140, 106, 74, 0.2);
+  font-family: inherit;
+  color: #5a4033;
+  /* Темно-коричневий текст */
+}
+
+/* Стилі заголовків */
+#modal h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: 600;
+  color: #8c6a4a;
+  /* Ваш основний коричневий колір */
+}
+
+/* Контейнери для полів вводу */
+.form-row {
+  margin-bottom: 15px;
+}
+
+#modal input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #efe5db;
+  border-radius: 10px;
+  background-color: #fff;
+  outline: none;
+  box-sizing: border-box;
+  /* Щоб падінги не розтягували інпут */
+  transition: border-color 0.3s ease;
+}
+
+#modal input:focus {
+  border-color: #8c6a4a;
+}
+
+/* Посилання (Зареєструватися / Увійти) */
+#modal p {
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-top: 20px;
+}
+
+#modal a {
+  color: #8c6a4a;
+  font-weight: bold;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+#modal a:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+/* Задній фон при відкритому модальному вікні */
+#modal::backdrop {
+  background: rgba(82, 65, 52, 0.5);
+  /* Напівпрозорий коричневий фон */
+  backdrop-filter: blur(3px);
+  /* Легке розмиття фону сайту */
+}
+
+/* Кнопка закриття (якщо захочете додати її в HTML) */
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #8c6a4a;
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  line-height: 1;
+  color: #8c6a4a;
+  /* Ваш фірмовий коричневий */
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+  padding: 5px;
+}
+
+.close-modal:hover {
+  transform: scale(1.2);
+  color: #5a4033;
+  /* Темніший при наведенні */
 }
