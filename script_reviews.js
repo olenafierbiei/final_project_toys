@@ -13,7 +13,7 @@ window.addEventListener("load", function () {
     const starContainer = document.createElement("div");
     starContainer.className = "star-rating";
     // Створюємо від 5 до 1 для коректної роботи CSS-фільтрів
-    for (let i = 5; i >= 1; i--) {
+    for (let i = 1; i <= 5; i++) {
       starContainer.innerHTML += `
         <input type="radio" name="stars" value="${i}" id="star-${i}" ${i === 5 ? "checked" : ""}>
         <label for="star-${i}">★</label>
@@ -42,13 +42,56 @@ window.addEventListener("load", function () {
 
     // Видалення
     div.querySelector(".delete-btn").onclick = function () {
-      if (document.body.classList.contains("admin-mode")) {
+      const password = prompt("Введіть пароль адміністратора для видалення:");
+
+      // Замініть "1234" на свій секретний пароль
+      if (password === "1234") {
         if (confirm("Видалити цей відгук?")) {
           removeReviewFromStorage(name, comment);
           div.remove();
+          alert("Відгук видалено.");
         }
       } else {
-        alert("Доступ заборонено.");
+        alert("Невірний пароль! Доступ заборонено.");
+      }
+    };
+
+
+    function renderReviews() {
+      const container = document.getElementById("reviews-container");
+      const reviews = JSON.parse(localStorage.getItem("userReviews")) || [];
+      container.innerHTML = "";
+
+      reviews.forEach((rev, index) => {
+        const div = document.createElement("div");
+        div.className = "review-card";
+
+        // Додаємо HTML картки
+        div.innerHTML = `
+      <div class="review-header">
+        <strong>${rev.name}</strong>
+        <div class="stars">${"★".repeat(rev.rating)}${"☆".repeat(5 - rev.rating)}</div>
+      </div>
+      <p>"${rev.comment}"</p>
+      
+      <button class="admin-delete-btn" onclick="deleteSpecificReview(${index})">&times;</button>
+    `;
+
+        container.appendChild(div);
+      });
+    }
+    window.deleteSpecificReview = function (index) {
+      if (confirm("Ви впевнені, що хочете видалити саме цей відгук?")) {
+        let reviews = JSON.parse(localStorage.getItem("userReviews")) || [];
+
+        // Видаляємо 1 елемент за вказаним індексом
+        reviews.splice(index, 1);
+
+        // Зберігаємо оновлений масив назад у LocalStorage
+        localStorage.setItem("userReviews", JSON.stringify(reviews));
+
+        // Перемальовуємо відгуки, щоб видалений зник зі сторінки
+        renderReviews();
       }
     };
 

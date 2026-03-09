@@ -81,37 +81,41 @@ function initBurgerMenu() {
 function initAuthModal() {
   const profileBtn = document.getElementById("profile-btn");
   const modal = document.getElementById("modal");
-  const closeModal = document.getElementById("close-modal"); // Нова кнопка
+  const closeModal = document.getElementById("close-modal");
   const loginForm = document.getElementById("login-form");
   const regForm = document.getElementById("reg-form");
   const regLink = loginForm.querySelector("a");
   const loginLink = regForm.querySelector("a");
 
-  // Відкриття модалки
-  profileBtn.addEventListener("click", function () {
-    modal.showModal();
-  });
+  profileBtn.addEventListener("click", () => modal.showModal());
+  closeModal.addEventListener("click", () => modal.close());
 
-  // ЗАКРИТТЯ модалки
-  closeModal.addEventListener("click", function () {
+  // Обробка відправки форм
+  loginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    console.log("Спроба входу...");
     modal.close();
   });
 
-  // Перемикання на реєстрацію
-  regLink.addEventListener("click", function (e) {
+  regForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    console.log("Реєстрація нового користувача...");
+    modal.close();
+  });
+
+  // Перемикання між формами
+  regLink.addEventListener("click", (e) => {
     e.preventDefault();
     regForm.hidden = false;
     loginForm.hidden = true;
   });
 
-  // Перемикання на вхід
-  loginLink.addEventListener("click", function (e) {
+  loginLink.addEventListener("click", (e) => {
     e.preventDefault();
     loginForm.hidden = false;
     regForm.hidden = true;
   });
 
-  // Закриття при кліку на фон (бекдроп)
   modal.addEventListener("click", (e) => {
     if (e.target === modal) modal.close();
   });

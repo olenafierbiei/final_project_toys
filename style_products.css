@@ -22,18 +22,22 @@
 /* Стилі для кожного окремого блоку каталогу */
 .catalog {
   display: flex;
-  flex-direction: column; /* Вибудовує елементи всередині блоку вертикально */
+  flex-direction: column;
+  /* Вибудовує елементи всередині блоку вертикально */
   align-items: center;
   width: 500px;
-  background: #fff; /* Білий фон (за бажанням) */
+  background: #fff;
+  /* Білий фон (за бажанням) */
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Легка тінь */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  /* Легка тінь */
 }
 
 /* Назва блоку — зверху */
 .catalog h3 {
-  order: 1; /* Задаємо черговість: 1 — найперший */
+  order: 1;
+  /* Задаємо черговість: 1 — найперший */
   margin-bottom: 15px;
   color: #402e21;
   font-family: "Playfair Display", serif;
@@ -42,17 +46,22 @@
 
 /* Картинка — посередині */
 .catalog img {
-  order: 2; /* 2 — посередині */
-  width: 100%; /* Розтягуємо по ширині блоку */
-  height: 360px; /* Фіксуємо висоту, щоб всі блоки були однакові */
-  object-fit: cover; /* Обрізаємо фото, щоб не деформувалося */
+  order: 2;
+  /* 2 — посередині */
+  width: 100%;
+  /* Розтягуємо по ширині блоку */
+  height: 360px;
+  /* Фіксуємо висоту, щоб всі блоки були однакові */
+  object-fit: cover;
+  /* Обрізаємо фото, щоб не деформувалося */
   border-radius: 10px;
   margin-bottom: 15px;
 }
 
 /* Посилання — знизу */
 .catalog a {
-  order: 3; /* 3 — в самому низу */
+  order: 3;
+  /* 3 — в самому низу */
   text-decoration: none;
   color: #8c6a4a;
   font-weight: bold;
@@ -72,12 +81,14 @@
 /* Адаптація для телефонів */
 @media (max-width: 768px) {
   #products {
-    flex-direction: column; /* Блоки стають один під одним */
+    flex-direction: column;
+    /* Блоки стають один під одним */
     align-items: center;
   }
 
   .catalog {
-    width: 90%; /* На мобільному займають майже всю ширину */
+    width: 90%;
+    /* На мобільному займають майже всю ширину */
   }
 }
 
@@ -86,18 +97,18 @@
 #toys_for_baby,
 #toys {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(280px, 1fr)
-  ); /* Автоматична сітка */
+  grid-template-columns: repeat(auto-fit,
+      minmax(280px, 1fr));
+  /* Автоматична сітка */
   gap: 30px;
   padding: 40px 5%;
   background-color: #fff;
 }
+
 /* Окрема картка товару */
-#blankets > div,
-#toys > div,
-#toys_for_baby > div {
+#blankets>div,
+#toys>div,
+#toys_for_baby>div {
   background: #fdfaf7;
   border-radius: 15px;
   overflow: hidden;
@@ -109,9 +120,9 @@
   flex-direction: column;
 }
 
-#blankets > div:hover,
-#toys_for_baby > div:hover,
-#toys > div:hover {
+#blankets>div:hover,
+#toys_for_baby>div:hover,
+#toys>div:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
 }
@@ -122,7 +133,8 @@
 #toys img[alt^="toy1"] {
   width: 100%;
   height: 250px;
-  object-fit: cover; /* Зберігає пропорції фото */
+  object-fit: cover;
+  /* Зберігає пропорції фото */
 }
 
 /* Контейнер з інфою всередині картки */
@@ -131,13 +143,16 @@
   text-align: center;
   position: relative;
 }
+
 .info_product h4 {
   font-family: "Playfair Display", serif;
   color: #402e21;
   font-size: 20px;
   margin-bottom: 10px;
-  min-height: 44px; /* Для вирівнювання заголовків у ряд */
+  min-height: 44px;
+  /* Для вирівнювання заголовків у ряд */
 }
+
 .info_product p {
   font-family: "Playfair Display", serif;
   font-weight: bold;
@@ -170,7 +185,8 @@
 
 .button_product img {
   width: 18px;
-  filter: brightness(0) invert(1); /* Робить іконку кошика білою */
+  filter: brightness(0) invert(1);
+  /* Робить іконку кошика білою */
 }
 
 /* Іконка серця (обране) */
@@ -178,6 +194,7 @@
 .info_product img[alt="heart"]:hover {
   transform: scale(1.1);
 }
+
 /* Блок вибору кількості */
 .quantity {
   display: flex;
@@ -255,6 +272,7 @@
 .quantity input[type="number"] {
   -moz-appearance: textfield;
 }
+
 /* Клас, який буде додаватися при натисканні */
 .wishlist-btn img[alt="heart"] {
   position: absolute;
@@ -269,12 +287,13 @@
   cursor: pointer;
   transition: 0.3s;
 }
+
 .wishlist-btn img[alt="heart"].active {
   /* Цей фільтр робить іконку коричневою */
-  filter: invert(23%) sepia(13%) saturate(1200%) hue-rotate(346deg)
-    brightness(95%) contrast(85%);
+  filter: invert(23%) sepia(13%) saturate(1200%) hue-rotate(346deg) brightness(95%) contrast(85%);
   transform: scale(1.1);
 }
+
 /*Щоб товари в кошику виглядали охайно:*/
 .cart-item {
   display: flex;
@@ -289,7 +308,7 @@
 
 .cart-item-controls button {
   background: #8c6a4a;
-  color: white;
+  color: #ffffff;
   border: none;
   padding: 5px 10px;
   cursor: pointer;
@@ -297,7 +316,8 @@
 }
 
 .delete-item {
-  background: #ff4d4d !important;
+  background: #f2caa1 !important;
+  color: #f8f8f8;
   margin-left: 15px;
 }
 
@@ -311,21 +331,28 @@
 
 #cart-count {
   position: absolute;
-  top: -8px; /* Зміщуємо вгору */
-  right: -8px; /* Зміщуємо вбік */
-  background-color: #8c6a4a; /* Ваш коричневий колір */
+  top: -8px;
+  /* Зміщуємо вгору */
+  right: -8px;
+  /* Зміщуємо вбік */
+  background-color: #8c6a4a;
+  /* Ваш коричневий колір */
   color: white;
   font-size: 11px;
   font-weight: bold;
   width: 18px;
   height: 18px;
-  display: none; /* Спочатку ховаємо, поки кошик порожній */
+  display: none;
+  /* Спочатку ховаємо, поки кошик порожній */
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  border: 2px solid white; /* Біла обводка, щоб виділялося */
-  pointer-events: none; /* Щоб лічильник не заважав клікати на іконку */
+  border: 2px solid white;
+  /* Біла обводка, щоб виділялося */
+  pointer-events: none;
+  /* Щоб лічильник не заважав клікати на іконку */
 }
+
 .actual-price {
   color: #402e21;
 }

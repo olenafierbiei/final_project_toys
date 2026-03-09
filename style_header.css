@@ -357,3 +357,34 @@ button {
   color: #5a4033;
   /* Темніший при наведенні */
 }
+
+.auth-submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #8c6a4a;
+  /* Ваш фірмовий коричневий */
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease, transform 0.2s active;
+}
+
+.auth-submit-btn:hover {
+  background-color: #70543a;
+  /* Трохи темніший при наведенні */
+}
+
+.auth-submit-btn:active {
+  transform: scale(0.98);
+  /* Ефект натискання */
+}
+
+/* Додамо трохи марджину для тексту під кнопкою */
+#modal p {
+  margin-top: 20px;
+  margin-bottom: 0;
+}

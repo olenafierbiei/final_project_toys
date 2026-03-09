@@ -18,10 +18,12 @@
 /* Контейнер для відгуків - ГОРИЗОНТАЛЬНА ПРОКРУТКА */
 .reviews-container {
   display: flex !important;
-  flex-wrap: nowrap !important; /* Все в одну лінію */
+  flex-wrap: nowrap !important;
+  /* Все в одну лінію */
   gap: 20px;
   padding: 20px;
-  overflow-x: auto !important; /* Скрол вліво-вправо */
+  overflow-x: auto !important;
+  /* Скрол вліво-вправо */
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   /* Ховаємо стандартний скролбар */
@@ -36,13 +38,15 @@
 
 /* Картка відгуку */
 .review-card {
-  flex: 0 0 300px !important; /* Фіксована ширина, не стискається */
+  flex: 0 0 300px !important;
+  /* Фіксована ширина, не стискається */
   background: #fff;
   border-radius: 15px;
   padding: 20px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   border: 1px solid #f0e6db;
-  width: 300px !important; /* Жорстка ширина */
+  width: 300px !important;
+  /* Жорстка ширина */
   min-width: 300px !important;
 }
 
@@ -80,7 +84,8 @@
   padding: 30px;
   border-radius: 20px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-  display: none; /* Сховано за замовчуванням */
+  display: none;
+  /* Сховано за замовчуванням */
 }
 
 /* Класи для показу форми через JS */
@@ -157,6 +162,36 @@ body.admin-mode .delete-btn {
   font-size: 25px;
 }
 
-.star-rating :checked ~ :not(:checked) + label {
+.star-rating :checked~ :not(:checked)+label {
   filter: none;
+}
+
+/* Ховаємо кнопки видалення для всіх */
+.admin-delete-btn {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* Показуємо кнопки ТІЛЬКИ в режимі адміністратора */
+body.admin-mode .admin-delete-btn {
+  display: block;
+}
+
+/* Стиль для картки, щоб кнопка позиціонувалася відносно неї */
+.review-card {
+  position: relative;
+  /* Обов'язково для точного розміщення кнопки */
+  padding: 20px;
+  /* ваші інші стилі */
 }
