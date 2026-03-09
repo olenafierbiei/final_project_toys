@@ -40,6 +40,49 @@
         <a href="index.html" class="continue-shopping">Повернутися до покупок</a>
       </div>
     </div>
+    <dialog id="order-modal" class="modal">
+      <div class="modal-content">
+        <button class="close-modal" id="close-order-modal">&times;</button>
+
+        <div id="step-1">
+          <h2>Підтвердження замовлення</h2>
+          <div id="order-items-preview" class="order-preview">
+          </div>
+          <div class="modal-total">
+            Разом до оплати: <span id="modal-total-sum">0</span> грн
+          </div>
+          <button id="next-to-form" class="submit-btn">Перейти до оформлення</button>
+        </div>
+
+        <form id="order-data-form" hidden>
+          <h2>Дані отримувача</h2>
+          <div class="form-row">
+            <input type="text" placeholder="Прізвище" required name="lastname">
+          </div>
+          <div class="form-row">
+            <input type="text" placeholder="Ім'я" required name="firstname">
+          </div>
+          <div class="form-row">
+            <input type="text" placeholder="По батькові" required name="middlename">
+          </div>
+          <div class="form-row">
+            <input type="text" placeholder="Адреса доставки (місто, відділення)" required name="address">
+          </div>
+
+          <div class="form-row">
+            <label>Спосіб оплати:</label>
+            <select name="payment" required>
+              <option value="card">Картка</option>
+              <option value="cash">Оплата при отриманні</option>
+              <option value="cod">Наложений платіж</option>
+            </select>
+          </div>
+
+          <button type="submit" class="submit-btn">Замовити</button>
+          <button type="button" id="back-to-step1" class="back-link">Повернутися до списку</button>
+        </form>
+      </div>
+    </dialog>
   </section>
   <div id="footer-placeholder"></div>
 </body>

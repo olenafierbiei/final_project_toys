@@ -93,3 +93,56 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+/*Скрипт збирає товари з кошика і показує їх у модалці.*/
+document.addEventListener("DOMContentLoaded", function () {
+  const orderModal = document.getElementById("order-modal");
+  const openModalBtn = document.getElementById("order-confirm-btn");
+  const closeModalBtn = document.getElementById("close-order-modal");
+  const step1 = document.getElementById("step-1");
+  const step2 = document.getElementById("order-data-form");
+
+  // Відкриття модалки та заповнення списку товарів
+  openModalBtn.addEventListener("click", () => {
+    const cart = JSON.parse(localStorage.getItem("userCart")) || [];
+    if (cart.length === 0) return alert("Кошик порожній!");
+
+    const previewContainer = document.getElementById("order-items-preview");
+    let total = 0;
+
+    previewContainer.innerHTML = cart.map(item => {
+      const price = parseInt(item.price) || 0;
+      const subtotal = price * (item.quantity || 1);
+      total += subtotal;
+      return `<div class="preview-item">
+                        <span>${item.name} (x${item.quantity})</span>
+                        <b>${subtotal} грн</b>
+                    </div>`;
+    }).join("");
+
+    document.getElementById("modal-total-sum").innerText = total;
+    orderModal.showModal();
+  });
+
+  // Перехід до форми даних
+  document.getElementById("next-to-form").addEventListener("click", () => {
+    step1.hidden = true;
+    step2.hidden = false;
+  });
+
+  // Повернення назад
+  document.getElementById("back-to-step1").addEventListener("click", () => {
+    step1.hidden = false;
+    step2.hidden = true;
+  });
+
+  // Фінальна відправка
+  step2.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const formData = new FormData(step2);
+
+    localStorage.removeItem("userCart");
+    window.location.href = "index.html";
+  });
+
+  closeModalBtn.addEventListener("click", () => orderModal.close());
+});

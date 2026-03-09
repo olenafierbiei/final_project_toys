@@ -392,3 +392,57 @@
   transform: scale(0.98);
   /* Ефект легкого вдавлювання */
 }
+
+
+/*Стилізація модального вікна*/
+#order-modal {
+  border: none;
+  border-radius: 20px;
+  padding: 30px;
+  width: 90%;
+  max-width: 500px;
+  background: #fdfaf7;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.order-preview {
+  max-height: 200px;
+  overflow-y: auto;
+  margin: 20px 0;
+  border-bottom: 1px solid #efe5db;
+}
+
+.preview-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.modal-total {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 20px 0;
+  text-align: right;
+  color: #8c6a4a;
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #8c6a4a;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 15px;
+  display: block;
+  width: 100%;
+}
+
+select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #efe5db;
+  background: white;
+  margin-top: 5px;
+}
