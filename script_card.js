@@ -31,15 +31,15 @@ document.addEventListener("DOMContentLoaded", function () {
         total += subtotal;
 
         return `
-          <div class="cart-item" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #efe5db; padding: 15px 0;">
+          <div class="cart-item" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #efe5db; padding-left: 50px; padding-right: 50px; ">
             <div class="cart-item-info">
               <h4 style="margin: 0; color: #5a4033;">${item.name}</h4>
               <p style="margin: 5px 0; color: #8c6a4a;">
                 ${priceNum} грн x ${qty} = <b>${subtotal} грн</b>
               </p>
             </div>
-            <div class="cart-item-controls" style="display: flex; align-items: center; gap: 15px;">
-              <div class="qty-control" style="display: flex; align-items: center; gap: 10px; background: #fdfaf7; padding: 5px 10px; border-radius: 20px;">
+            <div class="cart-item-controls" style="display: flex; align-items: center; gap: 15px; ">
+              <div class="qty-control" style="display: flex; align-items: center; gap: 10px; background: #fdfaf7; padding: 5px 10px; border-radius: 20px; margin: 20px;">
                 <button onclick="changeQty(${index}, -1)" style="border: none; background: none; cursor: pointer; font-weight: bold; color: #8c6a4a;">-</button>
                 <span style="font-weight: bold;">${qty}</span>
                 <button onclick="changeQty(${index}, 1)" style="border: none; background: none; cursor: pointer; font-weight: bold; color: #8c6a4a;">+</button>
@@ -90,3 +90,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Запуск логіки при відкритті сторінки
   renderCart();
 });
+
+
+

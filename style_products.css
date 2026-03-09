@@ -356,3 +356,39 @@
 .actual-price {
   color: #402e21;
 }
+
+.continue-shopping {
+  text-decoration: none;
+  padding-top: 20px;
+  color: black;
+}
+
+.continue-shopping:hover {
+  color: #8c6a4a;
+}
+
+/* Основний стиль кнопки */
+.submit-btn {
+  background-color: #8c6a4a;
+  /* Ваш стандартний коричневий */
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  /* Плавний перехід кольору */
+}
+
+/* Колір при наведенні (опціонально, трохи темніший) */
+.submit-btn:hover {
+  background-color: #7a5c40;
+}
+
+/* Колір при натисканні (світло-коричневий, як ви просили) */
+.submit-btn:active {
+  background-color: #b1967a;
+  /* Світло-коричневий */
+  transform: scale(0.98);
+  /* Ефект легкого вдавлювання */
+}

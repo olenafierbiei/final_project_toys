@@ -1,7 +1,7 @@
-/* Основні налаштування сторінки */
 .delivery-page {
   padding: 60px 5%;
-  background-color: #fdfaf7; /* Дуже світлий беж */
+  background-color: #fdfaf7;
+  /* Дуже світлий беж */
   font-family: "Montserrat", sans-serif;
   color: #402e21;
 }
@@ -44,7 +44,8 @@
 .icon-box {
   font-size: 50px;
   margin-bottom: 20px;
-  background: #f2ebe1; /* Бежевий фон для іконки */
+  background: #f2ebe1;
+  /* Бежевий фон для іконки */
   width: 90px;
   height: 90px;
   display: flex;
@@ -60,7 +61,8 @@
 .info-card h2 {
   text-align: center;
   font-family: "Playfair Display", serif;
-  color: #8c6a4a; /* Коричневий */
+  color: #8c6a4a;
+  /* Коричневий */
   margin-bottom: 20px;
   font-size: 28px;
 }
@@ -99,12 +101,10 @@
 .divider {
   border: 0;
   height: 1px;
-  background-image: linear-gradient(
-    to right,
-    rgba(140, 106, 74, 0),
-    rgba(140, 106, 74, 0.75),
-    rgba(140, 106, 74, 0)
-  );
+  background-image: linear-gradient(to right,
+      rgba(140, 106, 74, 0),
+      rgba(140, 106, 74, 0.75),
+      rgba(140, 106, 74, 0));
   margin: 60px 0;
 }
 
@@ -125,7 +125,8 @@
   margin: 40px auto 0;
   padding: 40px;
   background: #fff;
-  border: 2px solid #8c6a4a; /* Коричнева рамка */
+  border: 2px solid #8c6a4a;
+  /* Коричнева рамка */
   border-radius: 20px;
   text-align: left;
 }
@@ -189,10 +190,12 @@
   .page-title {
     font-size: 40px;
   }
+
   .delivery-form {
     padding: 25px;
     margin: 20px 10px;
   }
+
   .info-card {
     padding: 25px;
   }
