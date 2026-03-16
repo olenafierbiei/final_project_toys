@@ -40,7 +40,6 @@ header {
 
 /* 4. Блок з іконками (Пошук, Юзер, Кошик) */
 header div:last-child {
-  display: flex;
   align-items: center;
   gap: 15px;
 }
@@ -129,6 +128,10 @@ button {
 
 .search-wrapper {
   position: relative;
+}
+
+#profile-btn {
+  cursor: pointer;
 }
 
 .search-input-box {
