@@ -4,7 +4,8 @@
   justify-content: center;
   gap: 60px;
   padding: 80px 10%;
-  background-color: #fdfaf7; /* Теплий кремовий фон */
+  background-color: #fdfaf7;
+  /* Теплий кремовий фон */
 }
 
 #info_about_me {

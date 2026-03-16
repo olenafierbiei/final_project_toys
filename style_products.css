@@ -102,7 +102,7 @@
   /* Автоматична сітка */
   gap: 30px;
   padding: 40px 5%;
-  background-color: #fff;
+  background-color: #f2ebe1;
 }
 
 /* Окрема картка товару */
@@ -179,6 +179,8 @@
   margin: 20px 0;
 }
 
+
+
 .button_product:hover {
   background-color: #402e21;
 }
@@ -188,6 +190,22 @@
   filter: brightness(0) invert(1);
   /* Робить іконку кошика білою */
 }
+
+/* Стан при натисканні (моментальний відгук) */
+.button_product:active {
+  background-color: #b1967a;
+  transform: scale(0.97);
+}
+
+/* Стан після натискання (фокус) */
+.button_product:focus {
+  background-color: #b1967a;
+  /* Колір, який залишиться після кліку */
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(177, 150, 122, 0.5);
+  /* Додає легке сяйво */
+}
+
 
 /* Іконка серця (обране) */
 
